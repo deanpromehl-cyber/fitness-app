@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #222;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background: #0f0f0f;
+   margin: 0 auto;
+   padding-bottom: 80px;
+}
+
+.header{
+  color: #fff;
+  position: sticky;
+  top: 10px;
+  
+}
+
+.header-left{
+  position: absolute;
+  left: 10px;
+
+}
+
+.header-center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-right{
+  position: absolute;
+  right: 10px;
+  
+}
+
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 430px;
+  height: 70px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: #151515;
+}
+
+.homenumbers {
+  width: 90%;
+  max-width: 387px;
+  height: 70px;
+
+  margin: 40px auto 0;
+
+  padding: 5px;
+  border-radius: 20px;
+
+  color: #fff;
+  background: #151515;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.trophies {
+  width: 80%;
+  max-width: 387px;
+  height: 70px;
+
+  margin: 10px auto 0;
+
+  padding: 5px;
+  border-radius: 20px;
+
+  color: #fff;
+  background: #151515;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.starttraining {
+  width: 50%;
+  height: 55px;
+
+  margin-left: 25%;
+  margin-top: 20px;
+
+  border: none;
+  border-radius: 15px;
+
+  background: white;
+  color: #111;
+
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.workout-select {
+  width: 80%;
+  height: 50px;
+  margin-left:10%;
+  margin-top: 5px;
+  padding: 0 15px;
+
+  border: 1px solid #333;
+  border-radius: 15px;
+
+  background: #151515;
+  color: #ffffff;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+
+.recent-workouts {
+  width: 90%;
+  max-width: 387px;
+  margin: 35px auto 0;
+}
+
+.recent-workouts h2 {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.workout-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.workout-history-item {
+  width: 100%;
+  min-height: 75px;
+
+  padding: 12px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #151515;
+  border-radius: 15px;
+
+  color: white;
+}
+
+.workout-date {
+  margin: 0 0 5px 0;
+
+  font-size: 12px;
+  color: #888;
+}
+
+.workout-history-item h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.workout-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.monthly-stats {
+  width: 90%;
+  max-width: 387px;
+  margin: 30px auto 100px;
+}
+
+.monthly-stats h2 {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.monthly-stats-box {
+  width: 100%;
+  min-height: 75px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: #151515;
+  border-radius: 15px;
+
+  color: white;
+}
+
+.monthly-stats-box div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.monthly-stats-box span {
+  font-size: 12px;
+  color: #888;
+}
+
+.monthly-stats-box strong {
+  font-size: 16px;
+}
