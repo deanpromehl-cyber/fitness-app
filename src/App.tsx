@@ -6,6 +6,7 @@ import Workouts from './pages/workouts'
 import Stats from './pages/stats'
 import Profile from './pages/profile'
 import BottomNav from './components/bottomnav'
+import CreateWorkout from './pages/createworkout'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/workouts" element={<Workouts />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/create-workout" element={<CreateWorkout />} />
           </Routes>
         </main>
 

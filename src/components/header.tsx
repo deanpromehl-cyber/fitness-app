@@ -4,17 +4,11 @@ function Header() {
 
       
 
-        <div className="header-left">
-        <span>Level --</span>
-        </div>
-
-      <div className="header-center">
-        <span>Username</span>
-      </div>
-
-      <div className="header-right">
-        <span>23.08.2026</span>
-      </div>
+      <header className="header">
+      <span className="level">Level 1</span>
+      <span className="username">Username</span>
+      <span className="date">24.08.2026</span>
+    </header>
       
 
       
