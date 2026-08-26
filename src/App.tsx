@@ -7,6 +7,8 @@ import Stats from './pages/stats'
 import Profile from './pages/profile'
 import BottomNav from './components/bottomnav'
 import CreateWorkout from './pages/createworkout'
+import WorkoutDetail from './pages/workoutdetail'
+import Training from './pages/training'
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
             <Route path="/stats" element={<Stats />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-workout" element={<CreateWorkout />} />
+            <Route path="/workouts/:id" element={<WorkoutDetail />} />
+            <Route path="/training/:id" element={<Training />} />
+
           </Routes>
         </main>
 

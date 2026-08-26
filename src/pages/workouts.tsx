@@ -28,7 +28,11 @@ useEffect(() => {
       <h2 className="h2">Meine Workouts</h2>
 
      {workouts.map((workout) => (
-  <div className="workout-card" key={workout.id}>
+  <div
+  className="workout-card"
+  key={workout.id}
+  onClick={() => navigate(`/workouts/${workout.id}`)}
+>
 
     <h3>{workout.name}</h3>
 

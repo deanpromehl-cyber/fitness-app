@@ -1,13 +1,145 @@
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 function Home() {
+
+  const navigate = useNavigate()
+
+  const [workouts, setWorkouts] = useState<any[]>([])
+
+  const [selectedWorkout, setSelectedWorkout] = useState('')
+
+  const [trainingHistory, setTrainingHistory] = useState<any[]>([])
+
+  useEffect(() => {
+
+    const savedWorkouts = localStorage.getItem('workouts')
+
+    if (savedWorkouts) {
+
+      setWorkouts(JSON.parse(savedWorkouts))
+
+    }
+
+  }, [])
+
+  useEffect(() => {
+
+    const savedTrainings = localStorage.getItem('trainingHistory')
+
+    if (savedTrainings) {
+
+      setTrainingHistory(JSON.parse(savedTrainings))
+
+    }
+
+  }, [])
+
+  const totalWorkouts = trainingHistory.length
+
+const totalLifted = trainingHistory.reduce(
+  (total: number, training: any) => {
+
+    return total + training.exercises.reduce(
+      (exerciseTotal: number, exercise: any) => {
+
+        return exerciseTotal + exercise.sets.reduce(
+          (setTotal: number, set: any) => {
+
+            const weight = Number(set.weight) || 0
+            const reps = Number(set.reps) || 0
+
+            return setTotal + weight * reps
+
+          },
+          0
+        )
+
+      },
+      0
+    )
+
+  },
+  0
+)
+
+const totalTime = trainingHistory.reduce(
+  (total: number, training: any) =>
+    total + (Number(training.duration) || 0),
+  0
+)
+
+const totalHours = Math.floor(totalTime / 3600)
+const totalMinutes = Math.floor((totalTime % 3600) / 60)
+
+const now = new Date()
+
+const monthlyTrainings = trainingHistory.filter((training: any) => {
+
+  const trainingDate = new Date(training.date)
+
+  return (
+    trainingDate.getMonth() === now.getMonth() &&
+    trainingDate.getFullYear() === now.getFullYear()
+  )
+
+})
+
+const monthlyWorkouts = monthlyTrainings.length
+
+const monthlyLifted = monthlyTrainings.reduce(
+  (total: number, training: any) => {
+
+    return total + training.exercises.reduce(
+      (exerciseTotal: number, exercise: any) => {
+
+        return exerciseTotal + exercise.sets.reduce(
+          (setTotal: number, set: any) => {
+
+            const weight = Number(set.weight) || 0
+            const reps = Number(set.reps) || 0
+
+            return setTotal + weight * reps
+
+          },
+          0
+        )
+
+      },
+      0
+    )
+
+  },
+  0
+)
+
+const monthlyTime = monthlyTrainings.reduce(
+  (total: number, training: any) =>
+    total + (Number(training.duration) || 0),
+  0
+)
+
+const monthlyHours = Math.floor(monthlyTime / 3600)
+
+const monthlyMinutes = Math.floor(
+  (monthlyTime % 3600) / 60
+)
+
   return (
     <div className="home">
       <div className="homenumbers">
 
-        <p>Workouts: 0</p>
-        <p>Lifted: 0 kg</p>
-        <p>Time: 0 hours</p>
+  <p>Workouts: {totalWorkouts}</p>
 
-      </div>
+  <p>
+    Lifted: {totalLifted.toLocaleString('de-DE')} kg
+  </p>
+
+  <p>
+    Time: {totalHours} h {totalMinutes} min
+  </p>
+
+</div>
     <div className="trophies">
 
 
@@ -15,14 +147,33 @@ function Home() {
 
   <div className="maintraining">
 
-    <button className="starttraining">Start Training</button>
+    <button
+  className="starttraining"
+  onClick={() => {
+    if (selectedWorkout) {
+      navigate(`/training/${selectedWorkout}`)
+    }
+  }}
+>
+  Start Training
+</button>
 
-    <select className="workout-select">
-    <option value="">Workout auswählen</option>
-    <option value="push">Push Day</option>
-    <option value="pull">Pull Day</option>
-    <option value="legs">Leg Day</option>
-  </select>
+   <select
+  className="workout-select"
+  value={selectedWorkout}
+  onChange={(e) => setSelectedWorkout(e.target.value)}
+>
+  <option value="">Workout auswählen</option>
+
+  {workouts.map((workout) => (
+    <option
+      key={workout.id}
+      value={workout.id}
+    >
+      {workout.name}
+    </option>
+  ))}
+</select>
 
 
 
@@ -35,47 +186,90 @@ function Home() {
 
   <div className="workout-history">
 
-    <div className="workout-history-item">
-      <div>
-        <p className="workout-date">23.08.2026</p>
-        <h3>Push Day</h3>
-      </div>
+    {trainingHistory.length === 0 ? (
 
-      <div className="workout-stats">
-        <span>45 min</span>
-        <span>7.250 kg</span>
-      </div>
-    </div>
+      <p className="no-workouts">
+        Noch keine Trainings absolviert.
+      </p>
 
+    ) : (
 
-    <div className="workout-history-item">
-      <div>
-        <p className="workout-date">21.08.2026</p>
-        <h3>Leg Day</h3>
-      </div>
+      trainingHistory
+        .slice()
+        .reverse()
+        .slice(0, 3)
+        .map((training) => {
 
-      <div className="workout-stats">
-        <span>52 min</span>
-        <span>9.800 kg</span>
-      </div>
-    </div>
+          const date = new Date(training.date)
 
+          const formattedDate = date.toLocaleDateString('de-DE')
 
-    <div className="workout-history-item">
-      <div>
-        <p className="workout-date">19.08.2026</p>
-        <h3>Pull Day</h3>
-      </div>
+          const hours = Math.floor(training.duration / 3600)
+          const minutes = Math.floor((training.duration % 3600) / 60)
 
-      <div className="workout-stats">
-        <span>41 min</span>
-        <span>6.450 kg</span>
-      </div>
-    </div>
+          const formattedDuration =
+            hours > 0
+              ? `${hours} h ${minutes} min`
+              : `${minutes} min`
+
+          const totalWeight = training.exercises.reduce(
+            (total: number, exercise: any) => {
+
+              return total + exercise.sets.reduce(
+                (exerciseTotal: number, set: any) => {
+
+                  const weight = Number(set.weight) || 0
+                  const reps = Number(set.reps) || 0
+
+                  return exerciseTotal + weight * reps
+
+                },
+                0
+              )
+
+            },
+            0
+          )
+
+          return (
+
+            <div
+              className="workout-history-item"
+              key={training.id}
+            >
+
+              <div>
+
+                <p className="workout-date">
+                  {formattedDate}
+                </p>
+
+                <h3>{training.workoutName}</h3>
+
+              </div>
+
+              <div className="workout-stats">
+
+                <span>{formattedDuration}</span>
+
+                <span>
+                  {totalWeight.toLocaleString('de-DE')} kg
+                </span>
+
+              </div>
+
+            </div>
+
+          )
+
+        })
+
+    )}
 
   </div>
 
 </div>
+
 
 
 <div className="monthly-stats">
@@ -86,17 +280,21 @@ function Home() {
 
     <div>
       <span>Workouts</span>
-      <strong>12</strong>
+      <strong>{monthlyWorkouts}</strong>
     </div>
 
     <div>
       <span>Time</span>
-      <strong>8,5 h</strong>
+      <strong>
+        {monthlyHours} h {monthlyMinutes} min
+      </strong>
     </div>
 
     <div>
       <span>Gewicht</span>
-      <strong>72.450 kg</strong>
+      <strong>
+        {monthlyLifted.toLocaleString('de-DE')} kg
+      </strong>
     </div>
 
   </div>

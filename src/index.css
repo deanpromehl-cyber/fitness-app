@@ -622,3 +622,383 @@ body {
 .save-workout:active {
   transform: scale(0.98);
 }
+
+
+.delete-workout {
+  display: block;
+
+  width: 80%;
+  height: 45px;
+
+  margin: 10px auto 30px;
+
+  background: transparent;
+  color: #888;
+
+  border: 1px solid #333;
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.delete-workout:hover {
+  background: #241818;
+  color: #ff6b6b;
+  border-color: #5a3030;
+}
+
+.delete-workout:active {
+  transform: scale(0.98);
+}
+
+
+.workout-detail .sets-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.workout-detail .sets-control button {
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid #333;
+  border-radius: 10px;
+
+  background: #202020;
+  color: white;
+
+  font-size: 20px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.workout-detail .sets-control button:hover {
+  background: #292929;
+}
+
+.workout-detail .sets-control input {
+  width: 45px;
+  height: 38px;
+
+  padding: 0;
+
+  border: 1px solid #333;
+  border-radius: 10px;
+
+  background: #151515;
+  color: white;
+
+  text-align: center;
+  font-size: 16px;
+}
+
+
+.workout-name-input {
+  width: 90%;
+
+  margin: 30px auto 25px;
+
+  display: block;
+
+  background: transparent;
+  color: white;
+
+  border: none;
+  outline: none;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  text-align: center;
+}
+
+
+
+.training-page {
+  width: 90%;
+  max-width: 430px;
+  margin: 0 auto;
+
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.training-page h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 60px;
+  color: white;
+}
+
+.training-card {
+  width: 100%;
+  margin-bottom: 12px;
+
+  position: relative;
+overflow: visible !important;
+
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 14px;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.training-card:hover {
+  background: #1b1b1b;
+}
+
+.training-card-header {
+  min-height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+}
+
+.training-card-header h2 {
+  margin: 0;
+
+  font-size: 17px;
+}
+
+.training-card-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #888;
+  font-size: 14px;
+}
+
+.training-arrow {
+  font-size: 22px;
+  color: #aaa;
+
+  width: 20px;
+  text-align: center;
+}
+
+.training-card-content {
+  padding: 5px 16px 18px;
+
+  border-top: 1px solid #292929;
+}
+
+.set-header {
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr;
+  gap: 10px;
+
+  margin-bottom: 8px;
+
+  color: #777;
+  font-size: 12px;
+  text-align: center;
+}
+
+.set-row {
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr;
+  gap: 10px;
+
+  align-items: center;
+
+  margin-bottom: 8px;
+}
+
+.set-number {
+  text-align: center;
+
+  color: #aaa;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.set-row input {
+  width: 100%;
+  height: 38px;
+
+  box-sizing: border-box;
+
+  background: #202020;
+  color: white;
+
+  border: 1px solid #333;
+  border-radius: 9px;
+
+  text-align: center;
+  font-size: 14px;
+}
+
+.set-row input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.set-row input::placeholder {
+  color: #666;
+}
+
+
+.set-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 14px;
+}
+
+.set-controls button {
+  width: 34px;
+  height: 34px;
+
+  background: #202020;
+  color: white;
+
+  border: 1px solid #333;
+  border-radius: 9px;
+
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.set-controls button:hover {
+  background: #292929;
+}
+
+.set-controls span {
+  color: #888;
+  font-size: 13px;
+}
+
+.set-row input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.set-row input[type="number"]::-webkit-inner-spin-button,
+.set-row input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.training-card-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+
+.training-top {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.training-top h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.training-timer {
+  color: #aaa;
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.finish-training {
+  width: 100%;
+  height: 48px;
+
+  margin-top: 20px;
+
+  background: #202020;
+  color: white;
+
+  border: 1px solid #333;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.finish-training:hover {
+  background: #292929;
+}
+
+
+.add-training-exercise {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+
+  background: #151515;
+  color: #ffffff;
+
+  border: 1px dashed #444;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-training-exercise:hover {
+  background: #1d1d1d;
+  border-color: #666;
+}
+
+.add-training-exercise:active {
+  transform: scale(0.98);
+}
+
+.remove-training-exercise {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+
+  z-index: 1000;
+
+  width: 28px;
+  height: 28px;
+
+  background: transparent;
+  color: #e53935;
+  border: none;
+
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.remove-training-exercise:hover {
+  color: #ff5555;
+  transform: scale(1.15);
+}
