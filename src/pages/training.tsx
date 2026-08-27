@@ -16,22 +16,60 @@ function Training() {
   Record<number, Record<number, { weight: string; reps: string }>>
 >({})
 
-  useEffect(() => {
+useEffect(() => {
 
-    const savedWorkouts = localStorage.getItem('workouts')
+  if (!workout || !id) {
+    return
+  }
 
-    if (savedWorkouts) {
+  const trainingState = {
+    workout,
+    elapsedTime,
+    exerciseSets,
+    setData
+  }
 
-      const workouts = JSON.parse(savedWorkouts)
+  localStorage.setItem(
+    `activeTraining-${id}`,
+    JSON.stringify(trainingState)
+  )
 
-      const foundWorkout = workouts.find(
-        (workout: any) => workout.id.toString() === id
-      )
+}, [workout, elapsedTime, exerciseSets, setData, id])
 
-      setWorkout(foundWorkout)
-    }
+useEffect(() => {
 
-  }, [id])
+  const activeTraining = localStorage.getItem(
+    `activeTraining-${id}`
+  )
+
+  if (activeTraining) {
+
+    const savedState = JSON.parse(activeTraining)
+
+    setWorkout(savedState.workout)
+    setElapsedTime(savedState.elapsedTime ?? 0)
+    setExerciseSets(savedState.exerciseSets ?? {})
+    setSetData(savedState.setData ?? {})
+
+    return
+  }
+
+  const savedWorkouts = localStorage.getItem('workouts')
+
+  if (savedWorkouts) {
+
+    const workouts = JSON.parse(savedWorkouts)
+
+    const foundWorkout = workouts.find(
+      (workout: any) => workout.id.toString() === id
+    )
+
+    setWorkout(foundWorkout)
+  }
+
+}, [id])
+
+
 
   useEffect(() => {
   const timer = setInterval(() => {
@@ -40,6 +78,8 @@ function Training() {
 
   return () => clearInterval(timer)
 }, [])
+
+
 
   if (!workout) {
     return <p>Workout nicht gefunden.</p>
@@ -130,6 +170,8 @@ function finishTraining() {
     return
   }
 
+  
+
 
   const savedTrainings = localStorage.getItem('trainingHistory')
 
@@ -176,6 +218,8 @@ function finishTraining() {
 
   navigate('/')
 }
+
+
 
 function formatTime(seconds: number) {
   const hours = Math.floor(seconds / 3600)
