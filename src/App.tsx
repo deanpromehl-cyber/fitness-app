@@ -14,6 +14,8 @@ import StatsTrainingDetail from './pages/statstrainingdetail'
 import StatsPersonalRecords from './pages/statspersonalrecords'
 import StatsExerciseProgress from './pages/statsexerciseprogress'
 import StatsExerciseDetail from './pages/statsexercisedetail'
+import StatsMuscleGroups from './pages/statsmusclegroups'
+import StatsAverages from './pages/statsaverages'
 
 function App() {
   return (
@@ -37,7 +39,8 @@ function App() {
             <Route path="/stats/personal-records" element={<StatsPersonalRecords />} />
             <Route path="/stats/exercise-progress" element={<StatsExerciseProgress />} />
             <Route path="/stats/exercise-progress/:exerciseName" element={<StatsExerciseDetail />} />
-
+            <Route path="/stats/muscle-groups" element={<StatsMuscleGroups />} />
+            <Route path="/stats/averages" element={<StatsAverages />} />
           </Routes>
         </main>
 

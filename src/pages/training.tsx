@@ -87,10 +87,6 @@ const exerciseMuscleGroups: Record<string, string> = {
 }
 
 
-function getExerciseName(name: string) {
-  return exerciseNames[name] ?? name
-}
-
 
 function Training() {
 

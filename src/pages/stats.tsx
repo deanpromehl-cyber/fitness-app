@@ -103,7 +103,7 @@ function Stats() {
 
       <div
         className="stats-section"
-        onClick={() => navigate('/stats/muscles')}
+       onClick={() => navigate('/stats/muscle-groups')}
       >
 
         <div className="stats-section-header">
