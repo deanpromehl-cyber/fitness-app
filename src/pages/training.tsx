@@ -39,7 +39,7 @@ const exerciseNames: Record<string, string> = {
   cable_crunch: 'Kabel-Crunches',
   hanging_leg_raise: 'Hanging Leg Raises'
 }
-
+/*
 const exerciseMuscleGroups: Record<string, string> = {
 
   // Brust
@@ -85,7 +85,7 @@ const exerciseMuscleGroups: Record<string, string> = {
   hanging_leg_raise: 'Bauch'
 
 }
-
+*/
 
 
 function Training() {
