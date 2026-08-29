@@ -9,6 +9,11 @@ import BottomNav from './components/bottomnav'
 import CreateWorkout from './pages/createworkout'
 import WorkoutDetail from './pages/workoutdetail'
 import Training from './pages/training'
+import StatsHistory from './pages/statshistory'
+import StatsTrainingDetail from './pages/statstrainingdetail'
+import StatsPersonalRecords from './pages/statspersonalrecords'
+import StatsExerciseProgress from './pages/statsexerciseprogress'
+import StatsExerciseDetail from './pages/statsexercisedetail'
 
 function App() {
   return (
@@ -26,6 +31,12 @@ function App() {
             <Route path="/create-workout" element={<CreateWorkout />} />
             <Route path="/workouts/:id" element={<WorkoutDetail />} />
             <Route path="/training/:id" element={<Training />} />
+            
+            <Route path="/stats/history" element={<StatsHistory />} />
+            <Route path="/stats/history/:id" element={<StatsTrainingDetail />} />
+            <Route path="/stats/personal-records" element={<StatsPersonalRecords />} />
+            <Route path="/stats/exercise-progress" element={<StatsExerciseProgress />} />
+            <Route path="/stats/exercise-progress/:exerciseName" element={<StatsExerciseDetail />} />
 
           </Routes>
         </main>

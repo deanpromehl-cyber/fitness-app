@@ -3,6 +3,95 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 
+const exerciseNames: Record<string, string> = {
+  bench_press: 'Bankdrücken',
+  incline_bench_press: 'Schrägbankdrücken',
+  dumbbell_bench_press: 'Kurzhantel-Bankdrücken',
+  cable_fly: 'Kabel-Flys',
+
+  squat: 'Kniebeugen',
+  leg_press: 'Beinpresse',
+  leg_extension: 'Beinstrecker',
+  leg_curl: 'Beinbeuger',
+  lunges: 'Ausfallschritte',
+  calf_raise: 'Wadenheben',
+
+  deadlift: 'Kreuzheben',
+  lat_pulldown: 'Latzug',
+  pull_up: 'Klimmzüge',
+  barbell_row: 'Langhantelrudern',
+  seated_cable_row: 'Kabelrudern',
+
+  shoulder_press: 'Schulterdrücken',
+  lateral_raise: 'Seitheben',
+  front_raise: 'Frontheben',
+  reverse_fly: 'Reverse Flys',
+
+  bicep_curl: 'Bizepscurls',
+  hammer_curl: 'Hammercurls',
+  preacher_curl: 'Preacher Curls',
+
+  tricep_pushdown: 'Trizepsdrücken',
+  skull_crusher: 'French Press',
+  overhead_tricep_extension: 'Overhead Trizepsdrücken',
+
+  crunch: 'Crunches',
+  cable_crunch: 'Kabel-Crunches',
+  hanging_leg_raise: 'Hanging Leg Raises'
+}
+
+const exerciseMuscleGroups: Record<string, string> = {
+
+  // Brust
+  bench_press: 'Brust',
+  incline_bench_press: 'Brust',
+  dumbbell_bench_press: 'Brust',
+  cable_fly: 'Brust',
+
+  // Beine
+  squat: 'Beine',
+  leg_press: 'Beine',
+  leg_extension: 'Beine',
+  leg_curl: 'Beine',
+  lunges: 'Beine',
+  calf_raise: 'Waden',
+
+  // Rücken
+  deadlift: 'Rücken',
+  lat_pulldown: 'Rücken',
+  pull_up: 'Rücken',
+  barbell_row: 'Rücken',
+  seated_cable_row: 'Rücken',
+
+  // Schultern
+  shoulder_press: 'Schultern',
+  lateral_raise: 'Schultern',
+  front_raise: 'Schultern',
+  reverse_fly: 'Schultern',
+
+  // Bizeps
+  bicep_curl: 'Bizeps',
+  hammer_curl: 'Bizeps',
+  preacher_curl: 'Bizeps',
+
+  // Trizeps
+  tricep_pushdown: 'Trizeps',
+  skull_crusher: 'Trizeps',
+  overhead_tricep_extension: 'Trizeps',
+
+  // Bauch
+  crunch: 'Bauch',
+  cable_crunch: 'Bauch',
+  hanging_leg_raise: 'Bauch'
+
+}
+
+
+function getExerciseName(name: string) {
+  return exerciseNames[name] ?? name
+}
+
+
 function Training() {
 
   const { id } = useParams()
@@ -162,16 +251,13 @@ function removeExercise(exerciseId: number) {
 
 function finishTraining() {
 
-     const confirmed = window.confirm(
+  const confirmed = window.confirm(
     'Möchtest du das Training wirklich beenden?'
   )
 
   if (!confirmed) {
     return
   }
-
-  
-
 
   const savedTrainings = localStorage.getItem('trainingHistory')
 
@@ -216,9 +302,11 @@ function finishTraining() {
     JSON.stringify(trainingHistory)
   )
 
+  // Zwischenspeicherung löschen
+  localStorage.removeItem(`activeTraining-${id}`)
+
   navigate('/')
 }
-
 
 
 function formatTime(seconds: number) {
@@ -298,34 +386,30 @@ function formatTime(seconds: number) {
 {exercise.temporary && (
 
   <select
-    className="exercise-select"
-    value={exercise.name}
-    onChange={(e) => {
+  className="exercise-select"
+  value={exercise.name}
+  onChange={(e) => {
+    setWorkout({
+      ...workout,
+      exercises: workout.exercises.map((item: any) =>
+        item.id === exercise.id
+          ? {
+              ...item,
+              name: e.target.value
+            }
+          : item
+      )
+    })
+  }}
+>
+  <option value="">Übung auswählen</option>
 
-      setWorkout({
-        ...workout,
-        exercises: workout.exercises.map((item: any) =>
-          item.id === exercise.id
-            ? {
-                ...item,
-                name: e.target.value
-              }
-            : item
-        )
-      })
-
-    }}
-  >
-    <option value="">Übung auswählen</option>
-    <option value="bench_press">Bankdrücken</option>
-    <option value="squat">Kniebeugen</option>
-    <option value="deadlift">Kreuzheben</option>
-    <option value="shoulder_press">Schulterdrücken</option>
-    <option value="lat_pulldown">Latzug</option>
-    <option value="barbell_row">Langhantelrudern</option>
-    <option value="bicep_curl">Bizepscurls</option>
-    <option value="tricep_pushdown">Trizepsdrücken</option>
-  </select>
+  {Object.entries(exerciseNames).map(([value, label]) => (
+    <option key={value} value={value}>
+      {label}
+    </option>
+  ))}
+</select>
 
 )}
                 

@@ -150,10 +150,15 @@ const monthlyMinutes = Math.floor(
     <button
   className="starttraining"
   onClick={() => {
-    if (selectedWorkout) {
-      navigate(`/training/${selectedWorkout}`)
-    }
-  }}
+  if (selectedWorkout) {
+
+    localStorage.removeItem(
+      `activeTraining-${selectedWorkout}`
+    )
+
+    navigate(`/training/${selectedWorkout}`)
+  }
+}}
 >
   Start Training
 </button>

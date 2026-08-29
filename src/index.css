@@ -1002,3 +1002,1262 @@ overflow: visible !important;
   color: #ff5555;
   transform: scale(1.15);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   STATS SEITE
+   ========================= */
+
+.stats-page {
+  width: 90%;
+  max-width: 430px;
+  margin: 0 auto;
+
+  padding-top: 70px;
+  padding-bottom: 100px;
+
+  color: white;
+}
+
+.stats-page h1 {
+  text-align: center;
+
+  margin: 0px 0 30px;
+
+  font-size: 26px;
+  font-weight: bold;
+}
+
+
+/* =========================
+   LEVEL
+   ========================= */
+
+.stats-level {
+  width: 100%;
+
+  padding: 18px;
+
+  background: #151515;
+  border-radius: 15px;
+
+  margin-bottom: 15px;
+}
+
+.stats-level-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 12px;
+}
+
+.stats-level-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stats-level-number {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.stats-level-bar {
+  width: 100%;
+  height: 10px;
+
+  background: #292929;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.stats-level-progress {
+  height: 100%;
+
+  width: 65%;
+
+  background: white;
+
+  border-radius: 10px;
+
+  transition: width 0.3s ease;
+}
+
+.stats-level-xp {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 8px;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   STATS BEREICHE
+   ========================= */
+
+.stats-section {
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  background: #151515;
+
+  border: 1px solid #292929;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+}
+
+
+/* Kopf des Bereichs */
+
+.stats-section-header {
+  min-height: 60px;
+
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.stats-section-header:hover {
+  background: #1b1b1b;
+}
+
+.stats-section-header h2 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: white;
+}
+
+.stats-section-arrow {
+  color: #888;
+
+  font-size: 22px;
+
+  width: 20px;
+
+  text-align: center;
+}
+
+
+/* Inhalt */
+
+.stats-section-content {
+  padding: 5px 18px 18px;
+
+  border-top: 1px solid #292929;
+}
+
+
+/* =========================
+   ZEITRAUM AUSWAHL
+   ========================= */
+
+.stats-period {
+  display: flex;
+
+  gap: 6px;
+
+  margin-bottom: 15px;
+
+  overflow-x: auto;
+}
+
+.stats-period button {
+  flex: 1;
+
+  min-width: 70px;
+
+  height: 36px;
+
+  padding: 0 10px;
+
+  background: #202020;
+
+  color: #888;
+
+  border: 1px solid #333;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.stats-period button:hover {
+  background: #292929;
+  color: white;
+}
+
+.stats-period button.active {
+  background: white;
+  color: #111;
+
+  border-color: white;
+}
+
+
+/* =========================
+   WORKOUT HISTORIE
+   ========================= */
+
+.stats-workout-history {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.stats-workout-item {
+  padding: 13px 14px;
+
+  background: #202020;
+
+  border: 1px solid #292929;
+
+  border-radius: 11px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.stats-workout-item:hover {
+  background: #252525;
+}
+
+.stats-workout-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.stats-workout-name {
+  margin: 0;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: white;
+}
+
+.stats-workout-date {
+  color: #777;
+
+  font-size: 11px;
+}
+
+.stats-workout-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 7px;
+
+  color: #888;
+
+  font-size: 12px;
+}
+
+
+/* =========================
+   ÜBUNGSFORTSCHRITT
+   ========================= */
+
+.stats-exercise-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.stats-exercise-item {
+  padding: 14px;
+
+  background: #202020;
+
+  border-radius: 11px;
+
+  border: 1px solid #292929;
+}
+
+.stats-exercise-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.stats-exercise-name {
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: white;
+}
+
+.stats-exercise-pr {
+  font-size: 12px;
+
+  color: #aaa;
+}
+
+.stats-exercise-progress {
+  margin-top: 10px;
+
+  width: 100%;
+
+  height: 7px;
+
+  background: #292929;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.stats-exercise-progress-bar {
+  height: 100%;
+
+  width: 70%;
+
+  background: white;
+
+  border-radius: 10px;
+}
+
+
+/* =========================
+   DURCHSCHNITTLICHE STATS
+   ========================= */
+
+.stats-average-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+}
+
+.stats-average-card {
+  padding: 15px;
+
+  background: #202020;
+
+  border: 1px solid #292929;
+
+  border-radius: 11px;
+
+  text-align: center;
+}
+
+.stats-average-card span {
+  display: block;
+
+  color: #777;
+
+  font-size: 12px;
+
+  margin-bottom: 7px;
+}
+
+.stats-average-card strong {
+  display: block;
+
+  color: white;
+
+  font-size: 18px;
+}
+
+
+/* =========================
+   MUSKELGRUPPEN
+   ========================= */
+
+.stats-muscle-chart {
+  width: 100%;
+
+  min-height: 250px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   DIAGRAMME
+   ========================= */
+
+.stats-chart {
+  width: 100%;
+
+  min-height: 250px;
+
+  padding: 10px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #202020;
+
+  border-radius: 11px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   LEERER ZUSTAND
+   ========================= */
+
+.stats-empty {
+  padding: 25px 10px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 13px;
+}
+
+
+
+.stats-section {
+  cursor: pointer;
+}
+
+.stats-section:active {
+  transform: scale(0.99);
+}
+
+
+
+.stats-back-button {
+  background: transparent;
+  border: none;
+
+  color: #888;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  margin-bottom: 10px;
+}
+
+.stats-back-button:hover {
+  color: white;
+}
+
+
+
+.stats-workout-item {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.stats-workout-item:hover {
+  background: #1d1d1d;
+}
+
+.stats-edit-card {
+  width: 90%;
+  margin: 15px auto;
+  padding: 18px;
+
+  background: #151515;
+  border-radius: 15px;
+
+  color: white;
+}
+
+.stats-edit-card h2 {
+  margin: 0 0 15px;
+  font-size: 18px;
+}
+
+.stats-duration-edit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stats-duration-edit input {
+  width: 120px;
+  height: 40px;
+
+  background: #202020;
+  color: white;
+
+  border: 1px solid #333;
+  border-radius: 9px;
+
+  text-align: center;
+}
+
+.stats-duration-preview {
+  color: #888;
+  font-size: 14px;
+}
+
+.stats-set-header,
+.stats-set-row {
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr 35px;
+  gap: 8px;
+  align-items: center;
+}
+
+.stats-set-header {
+  margin-bottom: 8px;
+  color: #777;
+  font-size: 12px;
+  text-align: center;
+}
+
+.stats-set-row {
+  margin-bottom: 8px;
+}
+
+.stats-set-row > span {
+  text-align: center;
+  color: #aaa;
+}
+
+.stats-set-row input {
+  width: 100%;
+  height: 38px;
+
+  background: #202020;
+  color: white;
+
+  border: 1px solid #333;
+  border-radius: 9px;
+
+  text-align: center;
+}
+
+.stats-remove-set {
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  background: transparent;
+
+  color: #e53935;
+  font-size: 22px;
+
+  cursor: pointer;
+}
+
+.stats-add-set {
+  width: 100%;
+  height: 40px;
+
+  margin-top: 10px;
+
+  background: #202020;
+  color: white;
+
+  border: 1px dashed #444;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.stats-save-button {
+  display: block;
+
+  width: 90%;
+  height: 48px;
+
+  margin: 25px auto 40px;
+
+  background: white;
+  color: #111;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+
+.stats-edit-set input[type="number"],
+.stats-number-control input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.stats-edit-set input[type="number"]::-webkit-inner-spin-button,
+.stats-edit-set input[type="number"]::-webkit-outer-spin-button,
+.stats-number-control input[type="number"]::-webkit-inner-spin-button,
+.stats-number-control input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+.stats-edit-duration {
+  width: 90%;
+  margin: 25px auto;
+  padding: 18px;
+
+  background: #151515;
+  border-radius: 15px;
+
+  color: white;
+}
+
+.stats-edit-duration label {
+  display: block;
+  margin-bottom: 12px;
+
+  color: #aaa;
+  font-size: 14px;
+}
+
+.stats-number-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stats-number-control button {
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid #333;
+  border-radius: 10px;
+
+  background: #202020;
+  color: white;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.stats-number-control button:hover {
+  background: #292929;
+}
+
+.stats-number-control input {
+  width: 65px;
+  height: 38px;
+
+  border: 1px solid #333;
+  border-radius: 10px;
+
+  background: #202020;
+  color: white;
+
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Browser-Pfeile bei Zahlenfeldern entfernen */
+.stats-number-control input::-webkit-inner-spin-button,
+.stats-number-control input::-webkit-outer-spin-button,
+.stats-edit-set input::-webkit-inner-spin-button,
+.stats-edit-set input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stats-number-control input[type="number"],
+.stats-edit-set input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.stats-number-control span {
+  color: #888;
+  font-size: 14px;
+}
+
+
+.stats-edit-exercises {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.stats-edit-exercise {
+  margin-bottom: 15px;
+  padding: 18px;
+
+  background: #151515;
+  border-radius: 15px;
+
+  color: white;
+}
+
+.stats-edit-exercise h2 {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+}
+
+
+.stats-edit-header,
+.stats-edit-set {
+  display: grid;
+  grid-template-columns: 45px 1fr 1fr;
+  gap: 10px;
+
+  align-items: center;
+}
+
+.stats-edit-header {
+  margin-bottom: 8px;
+
+  color: #777;
+  font-size: 12px;
+  text-align: center;
+}
+
+.stats-edit-set {
+  margin-bottom: 8px;
+}
+
+.stats-edit-set-number {
+  text-align: center;
+
+  color: #aaa;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.stats-edit-set input {
+  width: 100%;
+  height: 38px;
+
+  border: 1px solid #333;
+  border-radius: 9px;
+
+  background: #202020;
+  color: white;
+
+  text-align: center;
+  font-size: 14px;
+}
+
+.stats-edit-set input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.stats-edit-set input::placeholder {
+  color: #666;
+}
+
+
+.stats-edit-set-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 14px;
+}
+
+.stats-edit-set-controls button {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #333;
+  border-radius: 9px;
+
+  background: #202020;
+  color: white;
+
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.stats-edit-set-controls button:hover {
+  background: #292929;
+}
+
+.stats-edit-set-controls span {
+  color: #888;
+  font-size: 13px;
+}
+
+
+.stats-save-button {
+  display: block;
+
+  width: 90%;
+  height: 50px;
+
+  margin: 20px auto 100px;
+
+  border: 1px solid #333;
+  border-radius: 12px;
+
+  background: #202020;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.stats-save-button:hover {
+  background: #292929;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   PERSONAL RECORDS
+   ========================= */
+
+.stats-search {
+  width: 90%;
+  max-width: 387px;
+
+  margin: 20px auto 20px;
+}
+
+.stats-search input {
+  width: 100%;
+  height: 45px;
+
+  padding: 0 15px;
+
+  background: #151515;
+  color: white;
+
+  border: 1px solid #292929;
+  border-radius: 12px;
+
+  font-size: 14px;
+  outline: none;
+}
+
+.stats-search input::placeholder {
+  color: #666;
+}
+
+.stats-search input:focus {
+  border-color: #444;
+}
+
+
+/* Liste */
+
+.stats-record-list {
+  width: 90%;
+  max-width: 387px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* Einzelne Übung */
+
+.stats-record-item {
+  width: 100%;
+
+  min-height: 82px;
+
+  padding: 15px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #151515;
+
+  border: 1px solid #292929;
+  border-radius: 15px;
+
+  color: white;
+
+  box-sizing: border-box;
+}
+
+
+/* Linke Seite */
+
+.stats-record-left {
+  min-width: 0;
+}
+
+.stats-record-left h2 {
+  margin: 0 0 7px;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.stats-record-left span {
+  color: #777;
+  font-size: 13px;
+}
+
+
+/* Rechte Seite */
+
+.stats-record-right {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  margin-left: 20px;
+
+  min-width: 80px;
+}
+
+.stats-record-right strong {
+  font-size: 18px;
+  font-weight: 700;
+
+  margin-bottom: 7px;
+}
+
+.stats-record-right small {
+  color: #777;
+  font-size: 11px;
+}
+
+
+
+
+
+/* =========================
+   EXERCISE PROGRESS
+   ========================= */
+
+.stats-exercise-list {
+  width: 90%;
+  max-width: 387px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-exercise-item {
+  position: relative;
+
+  width: 100%;
+  min-height: 82px;
+
+  padding: 15px 45px 15px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #151515;
+
+  border: 1px solid #292929;
+  border-radius: 15px;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.stats-exercise-item:hover {
+  background: #1b1b1b;
+}
+
+.stats-exercise-left h2 {
+  margin: 0 0 7px;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.stats-exercise-left span {
+  color: #777;
+  font-size: 13px;
+}
+
+.stats-exercise-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  margin-left: 15px;
+}
+
+.stats-exercise-right strong {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.stats-exercise-right span {
+  font-size: 12px;
+  color: #777;
+}
+
+.stats-exercise-arrow {
+  position: absolute;
+
+  right: 15px;
+
+  font-size: 24px;
+  color: #777;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   EXERCISE DETAIL
+   ========================= */
+
+.exercise-detail-summary {
+  width: 90%;
+  max-width: 387px;
+
+  margin: 20px auto;
+
+  display: flex;
+  justify-content: space-around;
+
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 15px;
+
+  padding: 18px 10px;
+}
+
+.exercise-detail-summary div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.exercise-detail-summary span {
+  color: #777;
+  font-size: 12px;
+}
+
+.exercise-detail-summary strong {
+  color: white;
+  font-size: 17px;
+}
+
+
+/* Kraftverlauf */
+
+.exercise-progress-chart {
+  width: 90%;
+  max-width: 387px;
+
+  margin: 25px auto;
+}
+
+.exercise-progress-chart h2,
+.exercise-training-history h2 {
+  color: white;
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+.exercise-chart {
+  width: 100%;
+  min-height: 220px;
+
+  padding: 20px 10px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+
+  overflow-x: auto;
+
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 15px;
+}
+
+.exercise-chart-item {
+  min-width: 55px;
+
+  height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.exercise-chart-bar {
+  width: 35px;
+
+  min-height: 20px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  background: #333;
+
+  border-radius: 7px 7px 0 0;
+
+  position: relative;
+}
+
+.exercise-chart-bar span {
+  position: absolute;
+
+  top: -22px;
+
+  white-space: nowrap;
+
+  color: white;
+  font-size: 11px;
+}
+
+.exercise-chart-item small {
+  margin-top: 8px;
+
+  color: #777;
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+
+/* Trainingsverlauf */
+
+.exercise-training-history {
+  width: 90%;
+  max-width: 387px;
+
+  margin: 30px auto 100px;
+}
+
+.exercise-training-item {
+  width: 100%;
+  min-height: 65px;
+
+  padding: 12px 15px;
+
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #151515;
+
+  border: 1px solid #292929;
+  border-radius: 13px;
+
+  color: white;
+}
+
+.exercise-training-item div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.exercise-training-item strong {
+  font-size: 16px;
+}
+
+.exercise-training-item span {
+  color: #777;
+  font-size: 12px;
+}
+
+.exercise-training-item small {
+  color: #777;
+  font-size: 11px;
+}
+

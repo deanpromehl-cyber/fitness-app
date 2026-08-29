@@ -112,14 +112,52 @@ function saveWorkout() {
   }}
 >
   <option value="">Übung auswählen</option>
-  <option value="bench_press">Bankdrücken</option>
-  <option value="squat">Kniebeugen</option>
-  <option value="deadlift">Kreuzheben</option>
-  <option value="shoulder_press">Schulterdrücken</option>
-  <option value="lat_pulldown">Latzug</option>
-  <option value="barbell_row">Langhantelrudern</option>
-  <option value="bicep_curl">Bizepscurls</option>
-  <option value="tricep_pushdown">Trizepsdrücken</option>
+
+{/* Brust */}
+<option value="bench_press">Bankdrücken</option>
+<option value="incline_bench_press">Schrägbankdrücken</option>
+<option value="dumbbell_bench_press">Kurzhantel-Bankdrücken</option>
+<option value="cable_fly">Kabel-Flys</option>
+
+{/* Beine */}
+<option value="squat">Kniebeugen</option>
+<option value="leg_press">Beinpresse</option>
+<option value="leg_extension">Beinstrecker</option>
+<option value="leg_curl">Beinbeuger</option>
+<option value="lunges">Ausfallschritte</option>
+<option value="calf_raise">Wadenheben</option>
+
+{/* Rücken */}
+<option value="deadlift">Kreuzheben</option>
+<option value="lat_pulldown">Latzug</option>
+<option value="pull_up">Klimmzüge</option>
+<option value="barbell_row">Langhantelrudern</option>
+<option value="seated_cable_row">Kabelrudern</option>
+
+{/* Schultern */}
+<option value="shoulder_press">Schulterdrücken</option>
+<option value="lateral_raise">Seitheben</option>
+<option value="front_raise">Frontheben</option>
+<option value="reverse_fly">Reverse Flys</option>
+
+{/* Bizeps */}
+<option value="bicep_curl">Bizepscurls</option>
+<option value="hammer_curl">Hammercurls</option>
+<option value="preacher_curl">Preacher Curls</option>
+
+{/* Trizeps */}
+<option value="tricep_pushdown">Trizepsdrücken</option>
+<option value="skull_crusher">French Press</option>
+<option value="overhead_tricep_extension">
+  Overhead Trizepsdrücken
+</option>
+
+{/* Bauch */}
+<option value="crunch">Crunches</option>
+<option value="cable_crunch">Kabel-Crunches</option>
+<option value="hanging_leg_raise">
+  Hanging Leg Raises
+</option>
 </select>
 
           <label>Sätze</label>
