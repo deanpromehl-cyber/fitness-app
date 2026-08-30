@@ -399,28 +399,25 @@ function finishTraining() {
   new Event('trainingCompleted')
 )
 
-const newlyUnlocked =
-  checkAchievements(
-    trainingHistory
-  )
+
+checkAchievements(
+  trainingHistory
+)
 
 
-  /* =========================
-     AKTIVES TRAINING LÖSCHEN
-  ========================= */
+ 
 
   localStorage.removeItem(
     `activeTraining-${id}`
   )
 
 
-  /* =========================
-     ZUR HOME SEITE
-  ========================= */
+  
 
   navigate('/')
 
 }
+
 
 
 function formatTime(seconds: number) {
