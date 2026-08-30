@@ -32,12 +32,6 @@ body {
    padding-bottom: 80px;
 }
 
-.header{
-  color: #fff;
-  position:relative;
-  top: 10px;
-  
-}
 
 
 
@@ -63,7 +57,7 @@ body {
   max-width: 387px;
   height: 70px;
 
-  margin: 60px auto 0;
+  margin: 30px auto 0;
 
   padding: 5px;
   border-radius: 20px;
@@ -265,30 +259,14 @@ body {
   z-index: 1000;
 }
 
-.level {
-  font-size: 13px;
-  color: #888;
-}
 
-.username {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-}
 
-.date {
-  margin-left: auto;
 
-  font-size: 13px;
-  color: #888;
-}
+
 
 .workouts {
-  padding-top: 70px;
+  padding-top: 30px;
   padding-bottom: 80px;
 }
 
@@ -1026,7 +1004,7 @@ overflow: visible !important;
   max-width: 430px;
   margin: 0 auto;
 
-  padding-top: 70px;
+  padding-top: 30px;
   padding-bottom: 100px;
 
   color: white;
@@ -2824,3 +2802,1462 @@ overflow: visible !important;
 
 
 
+/* =========================
+   TRAINING CALENDAR PAGE
+========================= */
+
+.stats-calendar-page {
+  width: 90%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 80px 0 110px;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.stats-calendar-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.stats-calendar-header h1 {
+  margin: 0;
+  color: #f5f5f5;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.stats-calendar-back {
+  position: absolute;
+  left: 0;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #f5f5f5;
+
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 32px;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   MONTH HEADER
+========================= */
+
+.calendar-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  background: #151515;
+  border-radius: 14px;
+
+  padding: 10px 12px;
+
+  box-sizing: border-box;
+}
+
+.calendar-month-title {
+  color: #f5f5f5;
+  font-size: 17px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.calendar-month-button {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #222;
+
+  color: #f5f5f5;
+
+  font-size: 28px;
+  font-weight: 300;
+
+  line-height: 32px;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   TODAY BUTTON
+========================= */
+
+.calendar-today-button {
+  display: block;
+
+  margin: 10px auto 16px;
+
+  padding: 7px 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #aaa;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.calendar-today-button:hover {
+  color: #f5f5f5;
+}
+
+
+/* =========================
+   CALENDAR
+========================= */
+
+.training-calendar {
+  width: 100%;
+
+  background: #151515;
+  border-radius: 14px;
+
+  padding: 14px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   WEEKDAYS
+========================= */
+
+.calendar-weekdays {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  margin-bottom: 6px;
+}
+
+.calendar-weekdays span {
+  text-align: center;
+
+  color: #777;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  padding-bottom: 6px;
+}
+
+
+/* =========================
+   CALENDAR GRID
+========================= */
+
+.calendar-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 5px;
+}
+
+
+/* =========================
+   DAY
+========================= */
+
+.calendar-day {
+  position: relative;
+
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #1c1c1c;
+
+  color: #aaa;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+
+.calendar-day:hover {
+  background: #242424;
+}
+
+.calendar-day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+
+/* =========================
+   DAY NUMBER
+========================= */
+
+.calendar-day-number {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+
+/* =========================
+   TRAINING DAY
+========================= */
+
+.calendar-day.has-training {
+  background: #252525;
+  color: #f5f5f5;
+}
+
+.calendar-day.has-training
+.calendar-day-number {
+  font-weight: 700;
+}
+
+
+/* =========================
+   TRAINING DOT / COUNT
+========================= */
+
+.calendar-training-dot {
+  position: absolute;
+
+  bottom: 5px;
+
+  min-width: 5px;
+  height: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #111;
+  background: #f5f5f5;
+
+  border-radius: 50%;
+
+  font-size: 0;
+
+  padding: 0;
+}
+
+
+/* =========================
+   TODAY
+========================= */
+
+.calendar-day.today {
+  box-shadow:
+    inset 0 0 0 1px #666;
+}
+
+
+/* =========================
+   SELECTED
+========================= */
+
+.calendar-day.selected {
+  background: #f5f5f5;
+  color: #111;
+}
+
+.calendar-day.selected
+.calendar-training-dot {
+  background: #111;
+}
+
+
+/* =========================
+   SELECTED DAY
+========================= */
+
+.calendar-selected-day {
+  margin-top: 16px;
+
+  width: 100%;
+
+  background: #151515;
+
+  border-radius: 14px;
+
+  padding: 16px;
+
+  box-sizing: border-box;
+}
+
+.calendar-selected-day h2 {
+  margin: 0 0 14px;
+
+  color: #f5f5f5;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+
+/* =========================
+   NO TRAINING
+========================= */
+
+.calendar-no-training {
+  color: #777;
+
+  font-size: 13px;
+
+  text-align: center;
+
+  padding: 18px 0;
+}
+
+
+/* =========================
+   TRAINING LIST
+========================= */
+
+.calendar-training-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+/* =========================
+   TRAINING CARD
+========================= */
+
+.calendar-training-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #1d1d1d;
+
+  color: #f5f5f5;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+.calendar-training-card:hover {
+  background: #242424;
+}
+
+
+/* =========================
+   TRAINING INFO
+========================= */
+
+.calendar-training-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.calendar-training-info strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.calendar-training-info span {
+  color: #777;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+.calendar-training-arrow {
+  color: #777;
+
+  font-size: 24px;
+  font-weight: 300;
+}
+
+
+/* =========================
+   SMALL SCREENS
+========================= */
+
+@media (max-width: 360px) {
+
+  .stats-calendar-page {
+    width: 92%;
+  }
+
+  .stats-calendar-header h1 {
+    font-size: 25px;
+  }
+
+  .training-calendar {
+    padding: 11px;
+  }
+
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-day-number {
+    font-size: 11px;
+  }
+
+  .calendar-weekdays span {
+    font-size: 9px;
+  }
+
+}
+
+
+
+
+
+
+.stats-level-bar {
+  width: 100%;
+  height: 8px;
+  background: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stats-level-progress {
+  height: 100%;
+  width: 0;
+  background: #f5f5f5;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+  width: 100%;
+  height: 60px;
+  transform: translatex(0%);
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 0 20px;
+
+  background: #0f0f0f;
+  border-bottom: 1px solid #292929;
+
+  box-sizing: border-box;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+/* LEVEL – links */
+
+.level {
+  justify-self: start;
+
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* USERNAME – exakt mittig */
+
+.username {
+  justify-self: center;
+
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* DATUM – rechts */
+
+.date {
+  justify-self: end;
+
+  color: #888888;
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ACHIEVEMENTS SEITE
+========================================= */
+
+.achievements-page {
+  width: 92%;
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 20px 0 100px;
+}
+
+
+/* =========================================
+   HAUPTÜBERSCHRIFT
+========================================= */
+
+.achievements-page > h1 {
+  margin: 0 0 25px;
+
+  text-align: center;
+
+  color: #f2f2f2;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   KATEGORIEN
+========================================= */
+
+.achievement-category {
+  margin-bottom: 25px;
+}
+
+
+/* Kategorie Überschrift */
+
+.achievement-category h2 {
+  margin: 0 0 12px;
+
+  color: #e8e8e8;
+
+  font-size: 19px;
+  font-weight: 600;
+
+  border-bottom: 1px solid #292929;
+
+  padding-bottom: 8px;
+}
+
+
+/* =========================================
+   ACHIEVEMENT GRID
+========================================= */
+
+.achievements-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+/* =========================================
+   ACHIEVEMENT CARD
+========================================= */
+
+.achievement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 190px;
+
+  padding: 15px 10px;
+
+  box-sizing: border-box;
+
+  background: #151515;
+
+  border: 1px solid #292929;
+
+  border-radius: 14px;
+
+  text-align: center;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+
+/* Freigeschaltet */
+
+.achievement-card.unlocked {
+  border-color: #555;
+}
+
+
+/* Gesperrt */
+
+.achievement-card.locked {
+  opacity: 0.45;
+}
+
+
+/* =========================================
+   BADGE
+========================================= */
+
+.achievement-badge {
+  width: 58px;
+  height: 58px;
+
+  min-width: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 9px;
+
+  background: #202020;
+
+  border: 1px solid #333;
+
+  border-radius: 50%;
+
+  font-size: 27px;
+}
+
+
+.achievement-card.unlocked
+.achievement-badge {
+  border-color: #666;
+}
+
+
+/* =========================================
+   TEXT
+========================================= */
+
+.achievement-info {
+  width: 100%;
+}
+
+
+.achievement-info h2 {
+  margin: 0 0 5px;
+
+  color: #f0f0f0;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+.achievement-info p {
+  margin: 0 0 10px;
+
+  color: #999;
+
+  font-size: 11px;
+
+  line-height: 1.35;
+}
+
+
+.achievement-info > span {
+  color: #777;
+
+  font-size: 10px;
+}
+
+
+.achievement-card.unlocked
+.achievement-info > span {
+  color: #aaa;
+}
+
+
+/* =========================================
+   FORTSCHRITT
+========================================= */
+
+.achievement-progress {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  margin-bottom: 7px;
+}
+
+
+.achievement-progress-bar {
+  width: 100%;
+
+  height: 6px;
+
+  background: #292929;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.achievement-progress-fill {
+  height: 100%;
+
+  background: #777;
+
+  border-radius: 10px;
+
+  transition: width 0.3s ease;
+}
+
+
+.achievement-progress > span {
+  text-align: center;
+
+  color: #888;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .achievements-page {
+    width: 94%;
+  }
+
+
+  .achievements-page > h1 {
+    font-size: 25px;
+
+    margin-bottom: 20px;
+  }
+
+
+  .achievement-category {
+    margin-bottom: 20px;
+  }
+
+
+  .achievement-category h2 {
+    font-size: 17px;
+
+    margin-bottom: 9px;
+  }
+
+
+  .achievements-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+
+  .achievement-card {
+    min-height: 170px;
+
+    padding: 11px 6px;
+
+    border-radius: 11px;
+  }
+
+
+  .achievement-badge {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    font-size: 22px;
+
+    margin-bottom: 7px;
+  }
+
+
+  .achievement-info h2 {
+    font-size: 12px;
+  }
+
+
+  .achievement-info p {
+    font-size: 9px;
+
+    margin-bottom: 7px;
+  }
+
+
+  .achievement-info > span {
+    font-size: 8px;
+  }
+
+
+  .achievement-progress {
+    margin-bottom: 5px;
+  }
+
+
+  .achievement-progress-bar {
+    height: 5px;
+  }
+
+
+  .achievement-progress > span {
+    font-size: 8px;
+  }
+
+}
+
+
+.achievement-progress-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 10px;
+
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.achievement-progress {
+  width: 100%;
+  height: 6px;
+
+  margin-top: 5px;
+
+  background: #252525;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.achievement-progress-fill {
+  height: 100%;
+
+  background: #ffffff;
+
+  border-radius: 10px;
+
+  transition: width 0.4s ease;
+}
+
+
+.achievement-card.unlocked
+.achievement-progress-fill {
+  background: #d8d8d8;
+}
+
+
+.achievement-status {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 12px;
+  color: #888;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.achievement-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 600px;
+
+  margin: 0 auto;
+}
+
+
+.achievement-category {
+  background: #151515;
+
+  border: 1px solid #252525;
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+
+.achievement-category-header {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 18px;
+
+  background: none;
+  border: none;
+
+  color: #eeeeee;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+.achievement-category-header:active {
+  transform: scale(0.99);
+}
+
+
+.achievement-category-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.category-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #202020;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+}
+
+
+.achievement-category-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.category-count {
+  color: #777;
+  font-size: 13px;
+}
+
+
+.category-arrow {
+  color: #aaa;
+  font-size: 20px;
+
+  width: 20px;
+
+  text-align: center;
+}
+
+
+.achievement-category-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 6px 8px 8px;
+}
+
+
+/* Einzelne Trophäe kompakter */
+.achievement-category-content .achievement-card {
+  display: flex;
+  align-items: center;
+
+  padding: 9px 10px;
+
+  min-height: 65px;
+
+  border-radius: 10px;
+}
+
+
+/* Badge kleiner */
+.achievement-category-content .achievement-badge {
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 21px;
+
+  margin-right: 10px;
+}
+
+
+/* Informationen */
+.achievement-category-content .achievement-info {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* Titel */
+.achievement-category-content .achievement-info h2 {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+
+/* Beschreibung */
+.achievement-category-content .achievement-info p {
+  margin: 2px 0 4px;
+
+  font-size: 11px;
+  line-height: 1.2;
+
+  color: #777;
+}
+
+
+/* Fortschritt */
+.achievement-category-content
+.achievement-progress-text {
+  margin-top: 2px;
+
+  font-size: 10px;
+}
+
+
+/* Balken */
+.achievement-category-content
+.achievement-progress {
+  height: 4px;
+
+  margin-top: 3px;
+}
+
+
+/* Status */
+.achievement-category-content
+.achievement-status {
+  margin-top: 3px;
+
+  font-size: 10px;
+}
+
+
+.achievement-category.open
+.achievement-category-header {
+  border-bottom: 1px solid #242424;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.trophies {
+  width: 80%;
+  max-width: 387px;
+  height: 70px;
+
+  margin: 10px auto 0;
+
+  padding: 5px;
+  border-radius: 20px;
+
+  color: #fff;
+  background: #151515;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.trophy-showcase {
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+}
+
+
+.trophy-list {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  gap: 5px;
+}
+
+
+.trophy-item {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+}
+
+
+.trophy-badge {
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #202020;
+
+  border: 1px solid #333;
+
+  border-radius: 50%;
+
+  font-size: 21px;
+}
+
+
+.trophy-name {
+  max-width: 70px;
+
+  overflow: hidden;
+
+  color: #aaa;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.trophy-empty {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+
+.trophy-empty-icon {
+  font-size: 25px;
+}
+
+
+.trophy-empty-text {
+  color: #888;
+
+  font-size: 13px;
+}
+
+
+.trophy-showcase:active {
+  transform: scale(0.98);
+}
+
+
+
+
+
+
+
+
+/* =========================
+   TROPHÄEN AUSWAHL
+   ========================= */
+
+.selected-achievements-info {
+  width: 90%;
+  max-width: 600px;
+
+  margin: 0 auto 14px;
+
+  padding: 11px 14px;
+
+  background: #151515;
+
+  border: 1px solid #252525;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  color: #aaa;
+}
+
+.selected-achievements-info span {
+  color: #eeeeee;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.selected-achievements-info small {
+  color: #666;
+
+  font-size: 10px;
+}
+
+
+/* =========================
+   AUSWAHL-KARTE
+   ========================= */
+
+.achievement-card.unlocked {
+  position: relative;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+
+/* Beim Antippen */
+
+.achievement-card.unlocked:active {
+  transform: scale(0.985);
+}
+
+
+/* =========================
+   AUSGEWÄHLT
+   ========================= */
+
+.achievement-card.selected {
+
+  background: #1b1b1b;
+
+  border: 1px solid #666;
+
+  box-shadow:
+    0 0 0 1px #333 inset;
+}
+
+
+/* =========================
+   AUSWAHL-HÄKCHEN
+   ========================= */
+
+.achievement-card.selected::after {
+
+  content: "✓";
+
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eeeeee;
+  color: #111;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
+/* =========================
+   AUSGEWÄHLTE TROPHÄE
+   ========================= */
+
+.achievement-card.selected
+.achievement-info > span {
+
+  color: #dddddd;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   NICHT AUSGEWÄHLTE
+   ========================= */
+
+.achievement-card.unlocked:not(.selected) {
+
+  border-color: #252525;
+
+  background: #151515;
+}
+
+
+/* =========================
+   GESPERRTE TROPHÄEN
+   ========================= */
+
+.achievement-card.locked {
+
+  cursor: default;
+
+  opacity: 0.65;
+}
+
+
+/* =========================
+   AUSWAHL-INFORMATION
+   ========================= */
+
+.selected-achievements-info span::before {
+
+  content: "🏆";
+
+  margin-right: 7px;
+}
+
+
+
+
+
+
+.achievement-category-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 6px 8px 8px;
+}
+
+.achievement-category-content .achievement-card {
+  display: flex;
+  align-items: center;
+
+  min-height: 62px;
+
+  padding: 8px 10px;
+
+  border-radius: 10px;
+}

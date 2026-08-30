@@ -312,11 +312,13 @@ function StatsAverages() {
 <div className="stats-averages-header">
 
   <button
-    className="stats-averages-back"
-    onClick={() => navigate(-1)}
-  >
-    ‹
-  </button>
+        className="stats-back-button"
+        onClick={() =>
+          navigate('/stats')
+        }
+      >
+        ← Zurück
+      </button>
 
   <h1>Average Statistics</h1>
 

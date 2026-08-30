@@ -2,6 +2,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import {
+  calculateTrainingXP
+} from '../utils/xp'
+
+import {
+  checkAchievements
+} from '../utils/achievementManager'
+
 
 const exerciseNames: Record<string, string> = {
   bench_press: 'Bankdrücken',
@@ -255,53 +263,163 @@ function finishTraining() {
     return
   }
 
-  const savedTrainings = localStorage.getItem('trainingHistory')
 
-  const trainingHistory = savedTrainings
-    ? JSON.parse(savedTrainings)
-    : []
+  /* =========================
+     BISHERIGE TRAININGS LADEN
+  ========================= */
 
-  const completedExercises = workout.exercises.map((exercise: any) => {
+  const savedTrainings =
+    localStorage.getItem('trainingHistory')
 
-    const numberOfSets =
-      exerciseSets[exercise.id] ?? exercise.sets
+  const trainingHistory =
+    savedTrainings
+      ? JSON.parse(savedTrainings)
+      : []
 
-    const sets = Array.from(
-      { length: numberOfSets },
-      (_, index) => ({
-        set: index + 1,
-        weight: setData[exercise.id]?.[index]?.weight ?? '',
-        reps: setData[exercise.id]?.[index]?.reps ?? ''
-      })
+
+  /* =========================
+     TRAINING ERSTELLEN
+  ========================= */
+
+  const completedExercises =
+    workout.exercises.map(
+      (exercise: any) => {
+
+        const numberOfSets =
+          exerciseSets[exercise.id] ??
+          exercise.sets
+
+
+        const sets =
+          Array.from(
+            {
+              length: numberOfSets
+            },
+            (_, index) => ({
+
+              set: index + 1,
+
+              weight:
+                setData[
+                  exercise.id
+                ]?.[index]?.weight ?? '',
+
+              reps:
+                setData[
+                  exercise.id
+                ]?.[index]?.reps ?? ''
+
+            })
+          )
+
+
+        return {
+
+          id: exercise.id,
+
+          name: exercise.name,
+
+          sets
+
+        }
+
+      }
     )
 
-    return {
-      id: exercise.id,
-      name: exercise.name,
-      sets
-    }
-  })
 
   const training = {
+
     id: Date.now(),
+
     workoutId: workout.id,
+
     workoutName: workout.name,
+
     duration: elapsedTime,
+
     date: new Date().toISOString(),
+
     exercises: completedExercises
+
   }
 
-  trainingHistory.push(training)
+
+  /* =========================
+     XP BERECHNEN
+  ========================= */
+
+  const xp = calculateTrainingXP(
+    training,
+    trainingHistory
+  )
+
+
+  /* =========================
+     XP AM TRAINING SPEICHERN
+  ========================= */
+
+  const trainingWithXP = {
+
+    ...training,
+
+    xp: xp.totalXP,
+
+    xpDetails: {
+
+      sets: xp.setXP,
+
+      weight: xp.weightXP,
+
+      time: xp.timeXP,
+
+      prs: xp.prXP
+
+    }
+
+  }
+
+
+  /* =========================
+     TRAINING SPEICHERN
+  ========================= */
+
+  trainingHistory.push(
+    trainingWithXP
+  )
+
 
   localStorage.setItem(
     'trainingHistory',
-    JSON.stringify(trainingHistory)
+    JSON.stringify(
+      trainingHistory
+    )
   )
 
-  // Zwischenspeicherung löschen
-  localStorage.removeItem(`activeTraining-${id}`)
+  window.dispatchEvent(
+  new Event('trainingCompleted')
+)
+
+const newlyUnlocked =
+  checkAchievements(
+    trainingHistory
+  )
+
+
+  /* =========================
+     AKTIVES TRAINING LÖSCHEN
+  ========================= */
+
+  localStorage.removeItem(
+    `activeTraining-${id}`
+  )
+
+
+  /* =========================
+     ZUR HOME SEITE
+  ========================= */
 
   navigate('/')
+
 }
 
 

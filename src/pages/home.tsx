@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import TrophyShowcase from '../components/TrophyShowcase'
 
 function Home() {
 
@@ -142,7 +143,7 @@ const monthlyMinutes = Math.floor(
 </div>
     <div className="trophies">
 
-
+<TrophyShowcase />
     </div>
 
   <div className="maintraining">

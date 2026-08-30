@@ -16,6 +16,8 @@ import StatsExerciseProgress from './pages/statsexerciseprogress'
 import StatsExerciseDetail from './pages/statsexercisedetail'
 import StatsMuscleGroups from './pages/statsmusclegroups'
 import StatsAverages from './pages/statsaverages'
+import StatsCalendar from './pages/statscalendar'
+import Achievements from './pages/achievements'
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             <Route path="/stats/exercise-progress/:exerciseName" element={<StatsExerciseDetail />} />
             <Route path="/stats/muscle-groups" element={<StatsMuscleGroups />} />
             <Route path="/stats/averages" element={<StatsAverages />} />
+            <Route path="/stats/calendar" element={<StatsCalendar />} />
+            <Route path="/achievements" element={<Achievements />} />
           </Routes>
         </main>
 
