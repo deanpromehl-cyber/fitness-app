@@ -9,44 +9,8 @@ import {
 import {
   checkAchievements
 } from '../utils/achievementManager'
+import { exerciseNames } from '../utils/exercises'
 
-
-const exerciseNames: Record<string, string> = {
-  bench_press: 'Bankdrücken',
-  incline_bench_press: 'Schrägbankdrücken',
-  dumbbell_bench_press: 'Kurzhantel-Bankdrücken',
-  cable_fly: 'Kabel-Flys',
-
-  squat: 'Kniebeugen',
-  leg_press: 'Beinpresse',
-  leg_extension: 'Beinstrecker',
-  leg_curl: 'Beinbeuger',
-  lunges: 'Ausfallschritte',
-  calf_raise: 'Wadenheben',
-
-  deadlift: 'Kreuzheben',
-  lat_pulldown: 'Latzug',
-  pull_up: 'Klimmzüge',
-  barbell_row: 'Langhantelrudern',
-  seated_cable_row: 'Kabelrudern',
-
-  shoulder_press: 'Schulterdrücken',
-  lateral_raise: 'Seitheben',
-  front_raise: 'Frontheben',
-  reverse_fly: 'Reverse Flys',
-
-  bicep_curl: 'Bizepscurls',
-  hammer_curl: 'Hammercurls',
-  preacher_curl: 'Preacher Curls',
-
-  tricep_pushdown: 'Trizepsdrücken',
-  skull_crusher: 'French Press',
-  overhead_tricep_extension: 'Overhead Trizepsdrücken',
-
-  crunch: 'Crunches',
-  cable_crunch: 'Kabel-Crunches',
-  hanging_leg_raise: 'Hanging Leg Raises'
-}
 /*
 const exerciseMuscleGroups: Record<string, string> = {
 
@@ -209,17 +173,6 @@ useEffect(() => {
 
 
   function getExerciseName(name: string) {
-  const exerciseNames: Record<string, string> = {
-    bench_press: 'Bankdrücken',
-    squat: 'Kniebeugen',
-    deadlift: 'Kreuzheben',
-    shoulder_press: 'Schulterdrücken',
-    lat_pulldown: 'Latzug',
-    barbell_row: 'Langhantelrudern',
-    bicep_curl: 'Bizepscurls',
-    tricep_pushdown: 'Trizepsdrücken'
-  }
-
   return exerciseNames[name] ?? name
 }
 

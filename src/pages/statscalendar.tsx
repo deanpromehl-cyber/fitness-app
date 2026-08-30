@@ -190,10 +190,6 @@ function StatsCalendar() {
     day: number
   ) {
 
-    const key =
-      getDateKey(day)
-
-
     return trainings.filter(
       training => {
 
@@ -365,21 +361,18 @@ function StatsCalendar() {
   return (
     <div className="stats-calendar-page">
 
+      <button
+        className="stats-back-button"
+        onClick={() => navigate('/stats')}
+      >
+        ← Zurück
+      </button>
 
       {/* =========================
           HEADER
       ========================= */}
 
       <div className="stats-calendar-header">
-
-        <button
-          className="stats-calendar-back"
-          onClick={() => navigate(-1)}
-        >
-          ‹
-        </button>
-
-
         <h1>
           Training Calendar
         </h1>

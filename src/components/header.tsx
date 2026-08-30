@@ -6,9 +6,11 @@ import {
   calculateTotalXP,
   type LevelInfo
 } from '../utils/level'
+import { useAuth } from '../auth/AuthProvider'
 
 
 function Header() {
+  const { user } = useAuth()
 
   const [levelInfo, setLevelInfo] =
     useState<LevelInfo>(
@@ -95,7 +97,7 @@ function Header() {
       </span>
 
       <span className="username">
-        Username
+        {user?.user_metadata.display_name || user?.email?.split('@')[0] || 'Sportler'}
       </span>
 
       <span className="date">

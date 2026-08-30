@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { exerciseOptions } from '../utils/exercises'
 
 function WorkoutDetail() {
 
@@ -132,14 +133,9 @@ function deleteWorkout() {
     >
 
       <option value="">Übung auswählen</option>
-      <option value="bench_press">Bankdrücken</option>
-      <option value="squat">Kniebeugen</option>
-      <option value="deadlift">Kreuzheben</option>
-      <option value="shoulder_press">Schulterdrücken</option>
-      <option value="lat_pulldown">Latzug</option>
-      <option value="barbell_row">Langhantelrudern</option>
-      <option value="bicep_curl">Bizepscurls</option>
-      <option value="tricep_pushdown">Trizepsdrücken</option>
+      {exerciseOptions.map((option) => (
+        <option key={option.id} value={option.id}>{option.name}</option>
+      ))}
 
     </select>
 

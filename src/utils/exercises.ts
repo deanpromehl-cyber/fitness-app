@@ -1,0 +1,200 @@
+export type ExerciseMuscleGroup =
+  | 'chest'
+  | 'back'
+  | 'legs'
+  | 'shoulders'
+  | 'biceps'
+  | 'triceps'
+  | 'abs'
+
+export type ExerciseOption = {
+  id: string
+  name: string
+  muscleGroup: ExerciseMuscleGroup
+}
+
+// One source of truth for workout creation, editing, training labels and stats.
+export const exerciseOptions: ExerciseOption[] = [
+  // Brust
+  { id: 'bench_press', name: 'Bankdrücken', muscleGroup: 'chest' },
+  { id: 'incline_bench_press', name: 'Schrägbankdrücken', muscleGroup: 'chest' },
+  { id: 'dumbbell_bench_press', name: 'Kurzhantel-Bankdrücken', muscleGroup: 'chest' },
+  { id: 'dumbbell_incline_bench_press', name: 'Schrägbankdrücken (Kurzhanteln)', muscleGroup: 'chest' },
+  { id: 'chest_press', name: 'Brustpresse', muscleGroup: 'chest' },
+  { id: 'incline_chest_press', name: 'Schrägbank-Brustpresse', muscleGroup: 'chest' },
+  { id: 'cable_fly', name: 'Kabel-Flys', muscleGroup: 'chest' },
+  { id: 'cable_crossover', name: 'Cable Crossover', muscleGroup: 'chest' },
+  { id: 'pec_deck', name: 'Butterfly', muscleGroup: 'chest' },
+  { id: 'push_up', name: 'Liegestütze', muscleGroup: 'chest' },
+  { id: 'wide_push_up', name: 'Breite Liegestütze', muscleGroup: 'chest' },
+  { id: 'close_push_up', name: 'Enge Liegestütze', muscleGroup: 'chest' },
+  { id: 'deficit_push_up', name: 'Deficit Push-Ups', muscleGroup: 'chest' },
+  { id: 'dips', name: 'Dips', muscleGroup: 'chest' },
+  { id: 'ring_dips', name: 'Ring Dips', muscleGroup: 'chest' },
+
+  // Rücken
+  { id: 'deadlift', name: 'Kreuzheben', muscleGroup: 'back' },
+  { id: 'romanian_deadlift', name: 'Rumänisches Kreuzheben', muscleGroup: 'legs' },
+  { id: 'barbell_row', name: 'Langhantelrudern', muscleGroup: 'back' },
+  { id: 't_bar_row', name: 'T-Bar Row', muscleGroup: 'back' },
+  { id: 'dumbbell_row', name: 'Kurzhantelrudern', muscleGroup: 'back' },
+  { id: 'seated_cable_row', name: 'Kabelrudern', muscleGroup: 'back' },
+  { id: 'chest_supported_row', name: 'Brustgestütztes Rudern', muscleGroup: 'back' },
+  { id: 'lat_pulldown', name: 'Latzug', muscleGroup: 'back' },
+  { id: 'narrow_lat_pulldown', name: 'Enger Latzug', muscleGroup: 'back' },
+  { id: 'wide_lat_pulldown', name: 'Breiter Latzug', muscleGroup: 'back' },
+  { id: 'pull_up', name: 'Klimmzüge', muscleGroup: 'back' },
+  { id: 'chin_up', name: 'Chin-Ups', muscleGroup: 'back' },
+  { id: 'neutral_pull_up', name: 'Neutral-Grip Pull-Ups', muscleGroup: 'back' },
+  { id: 'assisted_pull_up', name: 'Assisted Pull-Ups', muscleGroup: 'back' },
+  { id: 'straight_arm_pulldown', name: 'Straight-Arm Pulldown', muscleGroup: 'back' },
+  { id: 'machine_row', name: 'Maschine Rudern', muscleGroup: 'back' },
+  { id: 'reverse_fly', name: 'Reverse Flys', muscleGroup: 'shoulders' },
+  { id: 'face_pull', name: 'Face Pulls', muscleGroup: 'shoulders' },
+  { id: 'hyperextension', name: 'Hyperextensions', muscleGroup: 'back' },
+  { id: 'rack_pull', name: 'Rack Pulls', muscleGroup: 'back' },
+
+  // Bizeps
+  { id: 'bicep_curl', name: 'Bizepscurls', muscleGroup: 'biceps' },
+  { id: 'barbell_curl', name: 'Langhantelcurls', muscleGroup: 'biceps' },
+  { id: 'ez_bar_curl', name: 'SZ-Curls', muscleGroup: 'biceps' },
+  { id: 'dumbbell_curl', name: 'Kurzhantelcurls', muscleGroup: 'biceps' },
+  { id: 'hammer_curl', name: 'Hammercurls', muscleGroup: 'biceps' },
+  { id: 'incline_dumbbell_curl', name: 'Incline Dumbbell Curls', muscleGroup: 'biceps' },
+  { id: 'concentration_curl', name: 'Konzentrationscurls', muscleGroup: 'biceps' },
+  { id: 'preacher_curl', name: 'Preacher Curls', muscleGroup: 'biceps' },
+  { id: 'cable_curl', name: 'Kabelcurls', muscleGroup: 'biceps' },
+  { id: 'bayesian_curl', name: 'Bayesian Curls', muscleGroup: 'biceps' },
+  { id: 'spider_curl', name: 'Spider Curls', muscleGroup: 'biceps' },
+  { id: 'reverse_curl', name: 'Reverse Curls', muscleGroup: 'biceps' },
+
+  // Trizeps
+  { id: 'tricep_pushdown', name: 'Trizepsdrücken', muscleGroup: 'triceps' },
+  { id: 'rope_pushdown', name: 'Rope Pushdown', muscleGroup: 'triceps' },
+  { id: 'bar_pushdown', name: 'Stangen Pushdown', muscleGroup: 'triceps' },
+  { id: 'overhead_tricep_extension', name: 'Overhead Trizepsdrücken', muscleGroup: 'triceps' },
+  { id: 'french_press', name: 'French Press', muscleGroup: 'triceps' },
+  { id: 'skull_crusher', name: 'Skull Crushers', muscleGroup: 'triceps' },
+  { id: 'dumbbell_overhead_extension', name: 'Kurzhantel Overhead Extension', muscleGroup: 'triceps' },
+  { id: 'tricep_kickback', name: 'Trizeps Kickbacks', muscleGroup: 'triceps' },
+  { id: 'close_grip_bench_press', name: 'Enges Bankdrücken', muscleGroup: 'triceps' },
+  { id: 'bench_dips', name: 'Bench Dips', muscleGroup: 'triceps' },
+
+  // Schultern
+  { id: 'shoulder_press', name: 'Schulterdrücken', muscleGroup: 'shoulders' },
+  { id: 'barbell_shoulder_press', name: 'Schulterdrücken (Langhantel)', muscleGroup: 'shoulders' },
+  { id: 'dumbbell_shoulder_press', name: 'Schulterdrücken (Kurzhanteln)', muscleGroup: 'shoulders' },
+  { id: 'arnold_press', name: 'Arnold Press', muscleGroup: 'shoulders' },
+  { id: 'machine_shoulder_press', name: 'Maschine Schulterdrücken', muscleGroup: 'shoulders' },
+  { id: 'landmine_press', name: 'Landmine Press', muscleGroup: 'shoulders' },
+  { id: 'front_raise', name: 'Frontheben', muscleGroup: 'shoulders' },
+  { id: 'cable_front_raise', name: 'Cable Front Raises', muscleGroup: 'shoulders' },
+  { id: 'lateral_raise', name: 'Seitheben', muscleGroup: 'shoulders' },
+  { id: 'cable_lateral_raise', name: 'Kabel-Seitheben', muscleGroup: 'shoulders' },
+  { id: 'machine_lateral_raise', name: 'Maschine Seitheben', muscleGroup: 'shoulders' },
+  { id: 'lean_away_lateral_raise', name: 'Lean-Away Lateral Raises', muscleGroup: 'shoulders' },
+  { id: 'cable_reverse_fly', name: 'Cable Reverse Fly', muscleGroup: 'shoulders' },
+  { id: 'rear_delt_machine', name: 'Rear Delt Machine', muscleGroup: 'shoulders' },
+  { id: 'bent_over_reverse_fly', name: 'Bent-Over Reverse Fly', muscleGroup: 'shoulders' },
+
+  // Beine
+  { id: 'squat', name: 'Kniebeugen', muscleGroup: 'legs' },
+  { id: 'front_squat', name: 'Front Squats', muscleGroup: 'legs' },
+  { id: 'hack_squat', name: 'Hack Squats', muscleGroup: 'legs' },
+  { id: 'leg_press', name: 'Beinpresse', muscleGroup: 'legs' },
+  { id: 'bulgarian_split_squat', name: 'Bulgarian Split Squats', muscleGroup: 'legs' },
+  { id: 'lunges', name: 'Ausfallschritte', muscleGroup: 'legs' },
+  { id: 'walking_lunges', name: 'Walking Lunges', muscleGroup: 'legs' },
+  { id: 'reverse_lunges', name: 'Reverse Lunges', muscleGroup: 'legs' },
+  { id: 'step_up', name: 'Step-Ups', muscleGroup: 'legs' },
+  { id: 'leg_extension', name: 'Beinstrecker', muscleGroup: 'legs' },
+  { id: 'sissy_squat', name: 'Sissy Squats', muscleGroup: 'legs' },
+  { id: 'goblet_squat', name: 'Goblet Squats', muscleGroup: 'legs' },
+  { id: 'leg_curl', name: 'Beinbeuger', muscleGroup: 'legs' },
+  { id: 'lying_leg_curl', name: 'Beinbeuger liegend', muscleGroup: 'legs' },
+  { id: 'seated_leg_curl', name: 'Beinbeuger sitzend', muscleGroup: 'legs' },
+  { id: 'nordic_curl', name: 'Nordic Curl', muscleGroup: 'legs' },
+  { id: 'good_morning', name: 'Good Mornings', muscleGroup: 'legs' },
+  { id: 'single_leg_rdl', name: 'Single-Leg RDL', muscleGroup: 'legs' },
+  { id: 'hip_thrust', name: 'Hip Thrust', muscleGroup: 'legs' },
+  { id: 'glute_bridge', name: 'Glute Bridge', muscleGroup: 'legs' },
+  { id: 'cable_kickback', name: 'Cable Kickbacks', muscleGroup: 'legs' },
+  { id: 'sumo_squat', name: 'Sumo Squats', muscleGroup: 'legs' },
+  { id: 'sumo_deadlift', name: 'Sumo Deadlift', muscleGroup: 'legs' },
+  { id: 'calf_raise', name: 'Wadenheben', muscleGroup: 'legs' },
+  { id: 'standing_calf_raise', name: 'Wadenheben stehend', muscleGroup: 'legs' },
+  { id: 'seated_calf_raise', name: 'Wadenheben sitzend', muscleGroup: 'legs' },
+  { id: 'leg_press_calf_raise', name: 'Wadenheben an der Beinpresse', muscleGroup: 'legs' },
+  { id: 'single_leg_calf_raise', name: 'Single-Leg Calf Raises', muscleGroup: 'legs' },
+  { id: 'donkey_calf_raise', name: 'Donkey Calf Raises', muscleGroup: 'legs' },
+
+  // Bauch / Core
+  { id: 'crunch', name: 'Crunches', muscleGroup: 'abs' },
+  { id: 'cable_crunch', name: 'Kabel-Crunches', muscleGroup: 'abs' },
+  { id: 'sit_up', name: 'Sit-Ups', muscleGroup: 'abs' },
+  { id: 'hanging_leg_raise', name: 'Hanging Leg Raises', muscleGroup: 'abs' },
+  { id: 'hanging_knee_raise', name: 'Hanging Knee Raises', muscleGroup: 'abs' },
+  { id: 'leg_raise', name: 'Leg Raises', muscleGroup: 'abs' },
+  { id: 'reverse_crunch', name: 'Reverse Crunches', muscleGroup: 'abs' },
+  { id: 'ab_wheel_rollout', name: 'Ab Wheel Rollouts', muscleGroup: 'abs' },
+  { id: 'plank', name: 'Plank', muscleGroup: 'abs' },
+  { id: 'side_plank', name: 'Side Plank', muscleGroup: 'abs' },
+  { id: 'mountain_climber', name: 'Mountain Climbers', muscleGroup: 'abs' },
+  { id: 'russian_twist', name: 'Russian Twists', muscleGroup: 'abs' },
+  { id: 'bicycle_crunch', name: 'Bicycle Crunches', muscleGroup: 'abs' },
+  { id: 'dead_bug', name: 'Dead Bug', muscleGroup: 'abs' },
+  { id: 'hollow_body_hold', name: 'Hollow Body Hold', muscleGroup: 'abs' },
+  { id: 'l_sit', name: 'L-Sit', muscleGroup: 'abs' },
+  { id: 'dragon_flag', name: 'Dragon Flag', muscleGroup: 'abs' },
+  { id: 'pallof_press', name: 'Pallof Press', muscleGroup: 'abs' },
+  { id: 'woodchopper', name: 'Woodchoppers', muscleGroup: 'abs' },
+
+  // Calisthenics / Park / Bodyweight
+  { id: 'archer_push_up', name: 'Archer Push-Ups', muscleGroup: 'chest' },
+  { id: 'decline_push_up', name: 'Decline Push-Ups', muscleGroup: 'chest' },
+  { id: 'pseudo_planche_push_up', name: 'Pseudo Planche Push-Ups', muscleGroup: 'chest' },
+  { id: 'pike_push_up', name: 'Pike Push-Ups', muscleGroup: 'shoulders' },
+  { id: 'handstand_push_up', name: 'Handstand Push-Ups', muscleGroup: 'shoulders' },
+  { id: 'straight_bar_dip', name: 'Straight Bar Dips', muscleGroup: 'chest' },
+  { id: 'korean_dip', name: 'Korean Dips', muscleGroup: 'chest' },
+  { id: 'wide_pull_up', name: 'Breite Klimmzüge', muscleGroup: 'back' },
+  { id: 'close_grip_pull_up', name: 'Enge Klimmzüge', muscleGroup: 'back' },
+  { id: 'archer_pull_up', name: 'Archer Pull-Ups', muscleGroup: 'back' },
+  { id: 'commando_pull_up', name: 'Commando Pull-Ups', muscleGroup: 'back' },
+  { id: 'australian_pull_up', name: 'Australian Pull-Ups', muscleGroup: 'back' },
+  { id: 'muscle_up', name: 'Muscle-Ups', muscleGroup: 'back' },
+  { id: 'bar_muscle_up', name: 'Bar Muscle-Ups', muscleGroup: 'back' },
+  { id: 'ring_muscle_up', name: 'Ring Muscle-Ups', muscleGroup: 'back' },
+  { id: 'v_sit', name: 'V-Sit', muscleGroup: 'abs' },
+  { id: 'handstand', name: 'Handstand', muscleGroup: 'shoulders' },
+  { id: 'front_lever', name: 'Front Lever', muscleGroup: 'back' },
+  { id: 'front_lever_raise', name: 'Front Lever Raise', muscleGroup: 'back' },
+  { id: 'back_lever', name: 'Back Lever', muscleGroup: 'back' },
+  { id: 'human_flag', name: 'Human Flag', muscleGroup: 'abs' },
+  { id: 'planche', name: 'Planche', muscleGroup: 'chest' },
+  { id: 'tuck_planche', name: 'Tuck Planche', muscleGroup: 'chest' },
+  { id: 'straddle_planche', name: 'Straddle Planche', muscleGroup: 'chest' },
+  { id: 'one_arm_pull_up', name: 'One-Arm Pull-Up', muscleGroup: 'back' },
+  { id: 'one_arm_push_up', name: 'One-Arm Push-Up', muscleGroup: 'chest' },
+  { id: 'pistol_squat', name: 'Pistol Squats', muscleGroup: 'legs' },
+  { id: 'toes_to_bar', name: 'Toes to Bar', muscleGroup: 'abs' },
+  { id: 'windshield_wiper', name: 'Windshield Wipers', muscleGroup: 'abs' },
+  { id: 'skin_the_cat', name: 'Skin the Cat', muscleGroup: 'back' },
+  { id: 'knee_raise', name: 'Knee Raises', muscleGroup: 'abs' },
+  { id: 'planche_lean', name: 'Planche Lean', muscleGroup: 'chest' },
+  { id: 'ring_push_up', name: 'Ring Push-Ups', muscleGroup: 'chest' },
+  { id: 'ring_row', name: 'Ring Rows', muscleGroup: 'back' },
+  { id: 'ring_pull_up', name: 'Ring Pull-Ups', muscleGroup: 'back' },
+  { id: 'ring_l_sit', name: 'Ring L-Sit', muscleGroup: 'abs' },
+  { id: 'single_leg_glute_bridge', name: 'Single-Leg Glute Bridge', muscleGroup: 'legs' },
+  { id: 'burpee', name: 'Burpees', muscleGroup: 'legs' },
+  { id: 'jump_squat', name: 'Jump Squats', muscleGroup: 'legs' },
+]
+
+export const exerciseNames: Record<string, string> = Object.fromEntries(
+  exerciseOptions.map(({ id, name }) => [id, name]),
+)
+
+export const exerciseMuscleGroups: Record<string, ExerciseMuscleGroup> = Object.fromEntries(
+  exerciseOptions.map(({ id, muscleGroup }) => [id, muscleGroup]),
+)

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { exerciseMuscleGroups } from '../utils/exercises'
 
 type MuscleGroup = {
   key: string
@@ -53,55 +54,6 @@ function StatsMuscleGroups() {
     }
   ]
 
-
-  /*
-   * ÜBUNGEN → MUSKELGRUPPE
-   */
-
-  const exerciseMuscleGroups: Record<string, string> = {
-
-    // Brust
-    bench_press: 'chest',
-    incline_bench_press: 'chest',
-    dumbbell_bench_press: 'chest',
-    cable_fly: 'chest',
-
-    // Beine
-    squat: 'legs',
-    leg_press: 'legs',
-    leg_extension: 'legs',
-    leg_curl: 'legs',
-    lunges: 'legs',
-    calf_raise: 'legs',
-
-    // Rücken
-    deadlift: 'back',
-    lat_pulldown: 'back',
-    pull_up: 'back',
-    barbell_row: 'back',
-    seated_cable_row: 'back',
-
-    // Schultern
-    shoulder_press: 'shoulders',
-    lateral_raise: 'shoulders',
-    front_raise: 'shoulders',
-    reverse_fly: 'shoulders',
-
-    // Bizeps
-    bicep_curl: 'biceps',
-    hammer_curl: 'biceps',
-    preacher_curl: 'biceps',
-
-    // Trizeps
-    tricep_pushdown: 'triceps',
-    skull_crusher: 'triceps',
-    overhead_tricep_extension: 'triceps',
-
-    // Bauch
-    crunch: 'abs',
-    cable_crunch: 'abs',
-    hanging_leg_raise: 'abs'
-  }
 
 
   /*
