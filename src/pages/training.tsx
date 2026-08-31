@@ -10,6 +10,8 @@ import {
   checkAchievements
 } from '../utils/achievementManager'
 import { exerciseNames } from '../utils/exercises'
+import ExercisePicker from '../components/ExercisePicker'
+import { getBodyweightLoadFactor } from '../utils/bodyweight'
 
 /*
 const exerciseMuscleGroups: Record<string, string> = {
@@ -72,6 +74,23 @@ function Training() {
   const [setData, setSetData] = useState<
   Record<number, Record<number, { weight: string; reps: string }>>
 >({})
+  const [previousSetData, setPreviousSetData] = useState<Record<string, { weight: string; reps: string }>>({})
+  const [bodyWeight, setBodyWeight] = useState<number | null>(null)
+
+useEffect(() => {
+  const loadBodyWeight = () => {
+    try {
+      const settings = JSON.parse(localStorage.getItem('profileSettings') || '{}') as { bodyWeight?: number }
+      setBodyWeight(settings.bodyWeight && settings.bodyWeight > 0 ? settings.bodyWeight : null)
+    } catch {
+      setBodyWeight(null)
+    }
+  }
+
+  loadBodyWeight()
+  window.addEventListener('cloudDataLoaded', loadBodyWeight)
+  return () => window.removeEventListener('cloudDataLoaded', loadBodyWeight)
+}, [])
 
 useEffect(() => {
 
@@ -94,6 +113,26 @@ useEffect(() => {
 }, [workout, elapsedTime, exerciseSets, setData, id])
 
 useEffect(() => {
+
+  const savedTrainings = localStorage.getItem('trainingHistory')
+  if (savedTrainings) {
+    try {
+      const previousTraining = (JSON.parse(savedTrainings) as any[])
+        .filter((training) => training.workoutId?.toString() === id)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0]
+      if (previousTraining) {
+        const previousValues: Record<string, { weight: string; reps: string }> = {}
+        previousTraining.exercises.forEach((exercise: any) => {
+          exercise.sets?.forEach((set: any, index: number) => {
+            if (set.weight || set.reps) previousValues[`${exercise.id}:${index}`] = { weight: set.weight ?? '', reps: set.reps ?? '' }
+          })
+        })
+        setPreviousSetData(previousValues)
+      }
+    } catch {
+      setPreviousSetData({})
+    }
+  }
 
   const activeTraining = localStorage.getItem(
     `activeTraining-${id}`
@@ -176,6 +215,10 @@ useEffect(() => {
   return exerciseNames[name] ?? name
 }
 
+function getSuggestedBodyweight(exerciseName: string) {
+  return getBodyweightLoadFactor(exerciseName) !== null && bodyWeight ? String(bodyWeight) : ''
+}
+
 function addExercise() {
 
   const newExercise = {
@@ -255,7 +298,7 @@ function finishTraining() {
               weight:
                 setData[
                   exercise.id
-                ]?.[index]?.weight ?? '',
+                ]?.[index]?.weight ?? getSuggestedBodyweight(exercise.name),
 
               reps:
                 setData[
@@ -449,31 +492,22 @@ function formatTime(seconds: number) {
 
 {exercise.temporary && (
 
-  <select
-  className="exercise-select"
+  <ExercisePicker
   value={exercise.name}
-  onChange={(e) => {
+  onChange={(nextName) => {
     setWorkout({
       ...workout,
       exercises: workout.exercises.map((item: any) =>
         item.id === exercise.id
           ? {
               ...item,
-              name: e.target.value
+              name: nextName
             }
           : item
       )
     })
   }}
->
-  <option value="">Übung auswählen</option>
-
-  {Object.entries(exerciseNames).map(([value, label]) => (
-    <option key={value} value={value}>
-      {label}
-    </option>
-  ))}
-</select>
+/>
 
 )}
                 
@@ -499,8 +533,8 @@ function formatTime(seconds: number) {
 
       <input
   type="number"
-  placeholder="kg"
-  value={setData[exercise.id]?.[index]?.weight ?? ''}
+  placeholder={previousSetData[`${exercise.id}:${index}`]?.weight || 'kg'}
+  value={setData[exercise.id]?.[index]?.weight ?? getSuggestedBodyweight(exercise.name)}
   onChange={(e) =>
     updateSetData(
       exercise.id,
@@ -513,7 +547,7 @@ function formatTime(seconds: number) {
 
       <input
   type="number"
-  placeholder="Wdh"
+  placeholder={previousSetData[`${exercise.id}:${index}`]?.reps || 'Wdh'}
   value={setData[exercise.id]?.[index]?.reps ?? ''}
   onChange={(e) =>
     updateSetData(

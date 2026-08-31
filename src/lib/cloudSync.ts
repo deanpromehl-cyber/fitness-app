@@ -6,6 +6,7 @@ const syncedKeys = [
   'unlockedAchievements',
   'selectedAchievements',
   'activeTraining',
+  'profileSettings',
 ] as const
 
 type SyncedKey = (typeof syncedKeys)[number]

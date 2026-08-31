@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { exerciseOptions } from '../utils/exercises'
+import ExercisePicker from '../components/ExercisePicker'
 
 function CreateWorkout() {
 
@@ -99,24 +99,18 @@ function saveWorkout() {
 
           <label>Übung</label>
 
-          <select
-  className="exercise-select"
+          <ExercisePicker
   value={exercise.name}
-  onChange={(e) => {
+  onChange={(nextName) => {
     setExercises(
       exercises.map((item) =>
         item.id === exercise.id
-          ? { ...item, name: e.target.value }
+          ? { ...item, name: nextName }
           : item
       )
     )
   }}
->
-  <option value="">Übung auswählen</option>
-  {exerciseOptions.map((option) => (
-    <option key={option.id} value={option.id}>{option.name}</option>
-  ))}
-</select>
+/>
 
           <label>Sätze</label>
 

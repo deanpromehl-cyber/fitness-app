@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { exerciseOptions } from '../utils/exercises'
+import ExercisePicker from '../components/ExercisePicker'
 
 function WorkoutDetail() {
 
@@ -112,10 +112,9 @@ function deleteWorkout() {
 
     <label>Übung</label>
 
-    <select
-      className="exercise-select"
+    <ExercisePicker
       value={exercise.name}
-      onChange={(e) => {
+      onChange={(nextName) => {
 
         setWorkout({
           ...workout,
@@ -123,21 +122,14 @@ function deleteWorkout() {
             item.id === exercise.id
               ? {
                   ...item,
-                  name: e.target.value
+                  name: nextName
                 }
               : item
           )
         })
 
       }}
-    >
-
-      <option value="">Übung auswählen</option>
-      {exerciseOptions.map((option) => (
-        <option key={option.id} value={option.id}>{option.name}</option>
-      ))}
-
-    </select>
+    />
 
   
 

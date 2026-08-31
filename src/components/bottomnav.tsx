@@ -1,30 +1,30 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 function BottomNav() {
   return (
     <nav className="bottom-nav">
 
-      <Link to="/" className="nav-item">
+      <NavLink to="/" end className="nav-item">
         <span>⌂</span>
         <small id="home">Home</small>
-      </Link>
+      </NavLink>
 
-      <Link to="/workouts" className="nav-item">
+      <NavLink to="/workouts" className="nav-item">
         <span>💪</span>
         <small id="workouts">Workouts</small>
-      </Link>
+      </NavLink>
 
      
 
-      <Link to="/stats" className="nav-item">
+      <NavLink to="/stats" className="nav-item">
         <span>📊</span>
         <small id="stats">Stats</small>
-      </Link>
+      </NavLink>
 
-      <Link to="/profile" className="nav-item">
+      <NavLink to="/profile" className="nav-item">
         <span>👤</span>
         <small id="profile">Profile</small>
-      </Link>
+      </NavLink>
 
     </nav>
   )

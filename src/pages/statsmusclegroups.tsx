@@ -99,7 +99,14 @@ function StatsMuscleGroups() {
             return
           }
 
-          counts[muscle] += exercise.sets.length
+          // Only completed sets count. Planned but empty sets must not affect
+          // the muscle distribution.
+          const completedSets = exercise.sets.filter((set: { weight?: string; reps?: string }) => {
+            const reps = Number(set.reps)
+            return Number.isFinite(reps) && reps > 0
+          })
+
+          counts[muscle] += completedSets.length
 
         })
 

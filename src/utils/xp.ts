@@ -41,7 +41,7 @@ export function calculateTotalWeight(
             const reps =
               Number(set.reps) || 0
 
-            return setTotal + weight * reps
+            return setTotal + getEffectiveSetWeight(exercise.name, weight) * reps
 
           },
           0
@@ -269,3 +269,4 @@ export function calculateTrainingXP(
     totalXP
   }
 }
+import { getEffectiveSetWeight } from './bodyweight'

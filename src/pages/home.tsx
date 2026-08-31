@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import TrophyShowcase from '../components/TrophyShowcase'
+import { getEffectiveSetWeight } from '../utils/bodyweight'
 
 function Home() {
 
@@ -50,7 +51,7 @@ const totalLifted = trainingHistory.reduce(
             const weight = Number(set.weight) || 0
             const reps = Number(set.reps) || 0
 
-            return setTotal + weight * reps
+            return setTotal + getEffectiveSetWeight(exercise.name, weight) * reps
 
           },
           0
@@ -100,7 +101,7 @@ const monthlyLifted = monthlyTrainings.reduce(
             const weight = Number(set.weight) || 0
             const reps = Number(set.reps) || 0
 
-            return setTotal + weight * reps
+            return setTotal + getEffectiveSetWeight(exercise.name, weight) * reps
 
           },
           0
@@ -133,7 +134,7 @@ const monthlyMinutes = Math.floor(
   <p>Workouts: {totalWorkouts}</p>
 
   <p>
-    Lifted: {totalLifted.toLocaleString('de-DE')} kg
+    Lifted: {(totalLifted / 1000).toLocaleString('de-DE', { maximumFractionDigits: 1 })} t
   </p>
 
   <p>
@@ -227,7 +228,7 @@ const monthlyMinutes = Math.floor(
                   const weight = Number(set.weight) || 0
                   const reps = Number(set.reps) || 0
 
-                  return exerciseTotal + weight * reps
+                  return exerciseTotal + getEffectiveSetWeight(exercise.name, weight) * reps
 
                 },
                 0

@@ -43,14 +43,37 @@ body {
 
   width: 100%;
   max-width: 430px;
-  height: 70px;
-
+  height: 76px;
+  padding: 8px 12px max(8px, env(safe-area-inset-bottom));
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-  background: #151515;
+  gap: 6px;
+  border: 1px solid #2f2f2f;
+  border-bottom: 0;
+  border-radius: 22px 22px 0 0;
+  background: rgba(21, 21, 21, .96);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, .28);
+  backdrop-filter: blur(14px);
 }
+
+.nav-item {
+  min-width: 64px;
+  padding: 7px 10px;
+  border-radius: 14px;
+  color: #8c8c8c;
+  text-decoration: none;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  font-weight: 650;
+  transition: color .18s ease, background .18s ease, transform .18s ease;
+}
+
+.nav-item span { font-size: 20px; line-height: 1; }
+.nav-item small { font-size: 11px; }
+.nav-item.active { color: #101810; background: #75e891; }
+.nav-item:active { transform: scale(.96); }
 
 .homenumbers {
   width: 90%;
@@ -2585,7 +2608,7 @@ overflow: visible !important;
   width: 90%;
   max-width: 430px;
   margin: 0 auto;
-  padding: 80px 0 110px;
+  padding: 30px 0 110px;
   box-sizing: border-box;
 }
 
@@ -4300,3 +4323,5 @@ overflow: visible !important;
 .profile-settings { justify-content: space-between; }
 .profile-settings button { background: #ef4444; color: #fff; }
 .sync-error { color: #fca5a5 !important; }
+.profile-bodyweight label { margin-left: auto; display: flex; align-items: center; gap: 6px; color: #b5b5b5; }
+.profile-bodyweight input { width: 78px; border: 1px solid #454545; border-radius: 10px; padding: 9px; background: #101010; color: #fff; font: inherit; }

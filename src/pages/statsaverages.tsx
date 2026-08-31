@@ -1,6 +1,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getEffectiveSetWeight } from '../utils/bodyweight'
 
 
 
@@ -409,9 +410,10 @@ function StatsAverages() {
       {/* WEIGHT */}
 
       <AverageChart
-        title="Weight"
+        title="Gewicht"
         data={chartData.weight}
         xAxisTitle={xAxisTitle}
+        unit="t"
       />
 
     </div>
@@ -450,7 +452,7 @@ function calculateWeight(
 
             return (
               setTotal +
-              weight * reps
+              getEffectiveSetWeight(exercise.name, weight) * reps
             )
 
           },
@@ -460,7 +462,7 @@ function calculateWeight(
 
     },
     0
-  )
+  ) / 1000
 }
 
 
@@ -987,11 +989,13 @@ function formatAxisValue(
 function AverageChart({
   title,
   data,
-  xAxisTitle
+  xAxisTitle,
+  unit
 }: {
   title: string
   data: ChartPoint[]
   xAxisTitle: string
+  unit?: string
 }) {
 
   if (data.length === 0) {
@@ -1184,9 +1188,7 @@ function AverageChart({
                     textAnchor="end"
                     className="chart-y-label"
                   >
-                    {formatAxisValue(
-                      value
-                    )}
+                    {formatAxisValue(value)}{unit ? ` ${unit}` : ''}
                   </text>
 
                 </g>
